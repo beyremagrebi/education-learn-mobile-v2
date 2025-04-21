@@ -1,0 +1,369 @@
+{
+  "@@locale": "en",
+  "appName": "Studiffy",
+  "signInTitle": "Sign in",
+  "welcomeBack": "Welcome Back!",
+  "signInToContinue": "Sign in to continue",
+  "emailLabel": "Email",
+  "emailHint": "Your email",
+  "passwordLabel": "Password",
+  "passwordHint": "Your password",
+  "rememberMe": "Remember me",
+  "forgotPassword": "Forgot password?",
+  "loginButton": "Login",
+  "forgotPasswordTitle": "Forgot password",
+  "serverInitializing": "Please wait, while the server is initializing, it might take a minute or two...",
+  "cancelButton": "Cancel",
+  "connectionError": "Connection error",
+  "retryButton": "Retry",
+  "homeTab": "Home",
+  "chatTab": "Chat",
+  "courseTab": "Course",
+  "menuTab": "Menu",
+  "scheduleMenu": "Schedule",
+  "settingsMenu": "Settings",
+  "classMenu": "Class",
+  "classPageTitle": "Class",
+  "settingsTitle": "Settings",
+  "appThemeTitle": "App Theme",
+  "appThemeDescription": "Change app color theme",
+  "languageTitle": "Language",
+  "languageDescription": "Change app language",
+  "themeTitle": "Theme",
+  "lightTheme": "Light",
+  "darkTheme": "Dark",
+  "systemTheme": "System",
+  "englishLanguage": "English",
+  "englishCountry": "United Kingdom",
+  "frenchLanguage": "French",
+  "frenchCountry": "France",
+  "arabicLanguage": "Arabic",
+  "arabicCountry": "Tunisia",
+  "errorUnknown": "An unknown error occurred",
+  "errorBadRequest": "Invalid request. Please check your input",
+  "errorUnauthorized": "Session expired. Please login again",
+  "errorForbidden": "You don''t have permission to access this resource",
+  "errorNotFound": "The requested resource was not found",
+  "errorMethodNotAllowed": "The requested method is not allowed",
+  "errorRequestTimeout": "The request timed out. Please try again",
+  "errorConflict": "A conflict occurred while processing your request",
+  "errorPayloadTooLarge": "The request payload is too large",
+  "errorUnsupportedMediaType": "The media type is not supported",
+  "errorTooManyRequests": "Too many requests. Please try again later",
+  "errorTokenExpired": "Token expired or invalid",
+  "errorInternalServer": "An internal server error occurred",
+  "errorNotImplemented": "The requested functionality is not implemented",
+  "errorBadGateway": "Bad gateway. Please try again later",
+  "errorServiceUnavailable": "Service is temporarily unavailable",
+  "errorGatewayTimeout": "Gateway timeout. Please try again later",
+  "errorClient": "Client error occurred",
+  "errorServer": "Server error occurred",
+  "errorConnectionFailed": "Failed to connect to the server",
+  "errorConnectionTimeout": "Connection timeout",
+  "errorSendTimeout": "Sending request timed out",
+  "errorReceiveTimeout": "Server response timeout",
+  "errorBadCertificate": "Security error",
+  "errorRequestCancelled": "Request cancelled",
+  "errorNoInternet": "No internet connection",
+  "errorNetwork": "Network error",
+  "errorTimeout": "Timeout exceeded",
+  "fieldRequiredError": "This field is required",
+  "unspecifiedValidationError": "Validation error",
+  "genericError": "Error",
+  "support": "Support",
+  "male": "Male",
+  "female": "Female",
+  "otherGender": "Other",
+  "@male": {
+    "description": "Gender option - male",
+    "type": "text",
+    "context": "gender"
+  },
+  "@female": {
+    "description": "Gender option - female",
+    "type": "text",
+    "context": "gender"
+  },
+  "@otherGender": {
+    "description": "Gender option - other/non-binary",
+    "type": "text",
+    "context": "gender"
+  },
+  "@support": {
+    "description": "Generic term for help/support section",
+    "type": "text",
+    "context": "navigation"
+  },
+  "@genericError": {
+    "description": "Generic error message used as fallback",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@fieldRequiredError": {
+    "description": "Validation error message for required form fields",
+    "type": "text",
+    "context": "formValidation"
+  },
+  "@unspecifiedValidationError": {
+    "description": "Fallback error message for unspecified validation errors",
+    "type": "text",
+    "context": "formValidation"
+  },
+  "@errorUnknown": {
+    "description": "Generic error message when error type cannot be determined",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorBadRequest": {
+    "description": "Error message for HTTP 400 Bad Request",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorUnauthorized": {
+    "description": "Error message for HTTP 401 Unauthorized",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorForbidden": {
+    "description": "Error message for HTTP 403 Forbidden",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorNotFound": {
+    "description": "Error message for HTTP 404 Not Found",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorMethodNotAllowed": {
+    "description": "Error message for HTTP 405 Method Not Allowed",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorRequestTimeout": {
+    "description": "Error message for HTTP 408 Request Timeout",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorConflict": {
+    "description": "Error message for HTTP 409 Conflict",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorPayloadTooLarge": {
+    "description": "Error message for HTTP 413 Payload Too Large",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorUnsupportedMediaType": {
+    "description": "Error message for HTTP 415 Unsupported Media Type",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorTooManyRequests": {
+    "description": "Error message for HTTP 429 Too Many Requests",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorTokenExpired": {
+    "description": "Error message for custom HTTP 498 Token Expired",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorInternalServer": {
+    "description": "Error message for HTTP 500 Internal Server Error",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorNotImplemented": {
+    "description": "Error message for HTTP 501 Not Implemented",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorBadGateway": {
+    "description": "Error message for HTTP 502 Bad Gateway",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorServiceUnavailable": {
+    "description": "Error message for HTTP 503 Service Unavailable",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorGatewayTimeout": {
+    "description": "Error message for HTTP 504 Gateway Timeout",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorClient": {
+    "description": "Generic error message for 4xx client errors",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorServer": {
+    "description": "Generic error message for 5xx server errors",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorConnectionFailed": {
+    "description": "Error message for connection failures",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorConnectionTimeout": {
+    "description": "Error message for connection timeouts",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorSendTimeout": {
+    "description": "Error message for request sending timeouts",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorReceiveTimeout": {
+    "description": "Error message for response receiving timeouts",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorBadCertificate": {
+    "description": "Error message for SSL certificate issues",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorRequestCancelled": {
+    "description": "Error message when request is cancelled",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorNoInternet": {
+    "description": "Error message when device is offline",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorNetwork": {
+    "description": "Generic network error message",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@errorTimeout": {
+    "description": "Error message for general timeout situations",
+    "type": "text",
+    "context": "errorMessages"
+  },
+  "@homeTab": {
+    "description": "Home tab label in bottom navigation"
+  },
+  "@chatTab": {
+    "description": "Chat tab label in bottom navigation"
+  },
+  "@courseTab": {
+    "description": "Course tab label in bottom navigation"
+  },
+  "@menuTab": {
+    "description": "Menu tab label in bottom navigation"
+  },
+  "@appName": {
+    "description": "App Name"
+  },
+  "@signInTitle": {
+    "description": "App bar title for login screen"
+  },
+  "@welcomeBack": {
+    "description": "Welcome heading text"
+  },
+  "@signInToContinue": {
+    "description": "Subheading below welcome text"
+  },
+  "@emailLabel": {
+    "description": "Label for email input field"
+  },
+  "@emailHint": {
+    "description": "Hint text for email input"
+  },
+  "@passwordLabel": {
+    "description": "Label for password input field"
+  },
+  "@passwordHint": {
+    "description": "Hint text for password input"
+  },
+  "@rememberMe": {
+    "description": "Remember me checkbox label"
+  },
+  "@forgotPassword": {
+    "description": "Forgot password link text"
+  },
+  "@loginButton": {
+    "description": "Login button text"
+  },
+  "@forgotPasswordTitle": {
+    "description": "Title for forgot password screen"
+  },
+  "@serverInitializing": {
+    "description": "Message shown while waiting for server initialization"
+  },
+  "@cancelButton": {
+    "description": "Cancel button text"
+  },
+  "@connectionError": {
+    "description": "Error message when connection fails"
+  },
+  "@retryButton": {
+    "description": "Retry button text"
+  },
+  "@scheduleMenu": {
+    "description": "Schedule menu item in More tab"
+  },
+  "@settingsMenu": {
+    "description": "Settings menu item in More tab"
+  },
+  "@classMenu": {
+    "description": "Class menu item in More tab"
+  },
+  "@classPageTitle": {
+    "description": "Title for Class page"
+  },
+  "@settingsTitle": {
+    "description": "Title of settings screen"
+  },
+  "@appThemeTitle": {
+    "description": "Title for theme setting option"
+  },
+  "@appThemeDescription": {
+    "description": "Description for theme setting"
+  },
+  "@languageTitle": {
+    "description": "Title for language setting option"
+  },
+  "@languageDescription": {
+    "description": "Description for language setting"
+  },
+  "@themeTitle": {
+    "description": "Title of theme selection screen"
+  },
+  "@lightTheme": {
+    "description": "Light theme option label"
+  },
+  "@darkTheme": {
+    "description": "Dark theme option label"
+  },
+  "@systemTheme": {
+    "description": "System default theme option label"
+  },
+  "@englishLanguage": {
+    "description": "English language option"
+  },
+  "@englishCountry": {
+    "description": "English country name"
+  },
+  "@frenchLanguage": {
+    "description": "French language option"
+  },
+  "@frenchCountry": {
+    "description": "French country name"
+  },
+  "@arabicLanguage": {
+    "description": "Arabic language option"
+  },
+  "@arabicCountry": {
+    "description": "Arabic country name"
+  }
+}
