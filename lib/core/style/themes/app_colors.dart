@@ -33,4 +33,9 @@ const Color textOnPrimary = Colors.white; // White text for primary buttons
 
 // Text colors (added for better organization)
 const Color textColorLight = Color(0xFF333333); // Dark text for light theme
-const Color textColorDark = Color(0xFFE0E0E0);      // Light text for dark theme
+const Color textColorDark = Color(0xFFE0E0E0); // Light text for dark theme
+
+const Color barrierColorLight =
+    Color(0x80000000); // Semi-transparent black for light theme
+const Color barrierColorDark =
+    Color(0x80FFFFFF); // Semi-transparent white for dark theme

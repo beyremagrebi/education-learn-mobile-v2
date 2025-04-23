@@ -1,9 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:studiffy/core/config/env.dart';
+import 'package:studiffy/core/constant/assets.dart';
+import 'package:studiffy/utils/app/session/token_manager.dart';
+import 'package:studiffy/utils/navigator_utils.dart';
 
 import '../../../core/style/dimensions.dart';
 import '../../../core/style/themes/app_colors.dart';
+import 'image_file_view.dart';
 
 class ApiImageWidget extends StatelessWidget {
   final String? imageFilename;
@@ -66,25 +71,24 @@ class ApiImageWidget extends StatelessWidget {
   }
 
   Widget _buildCachedNetworkImage(BuildContext context) {
-    // final imageUrl = '${baseUrl ?? filesUrl}/$imageFilename';
+    final imageUrl = '${baseUrl ?? fileUrl}/$imageFilename';
     return CachedNetworkImage(
-      imageUrl: '',
-
-      // key: Key(imageUrl),
-      // height: height,
-      // width: width,
-      // cacheKey: imageUrl,
-      // imageUrl: imageUrl,
-      // httpHeaders: {
-      //   'Authorization': 'Bearer ${TokenManager.accessToken}',
-      // },
-      // imageBuilder: (context, imageProvider) => _buildImage(
-      //   context,
-      //   imageProvider,
-      // ),
-      // progressIndicatorBuilder: (context, url, progress) =>
-      //     _buildPlaceholderImage(isLoading: true),
-      // errorWidget: (context, url, error) => _buildPlaceholderImage(),
+      key: Key(imageUrl),
+      height: height,
+      width: width,
+      cacheKey: imageUrl,
+      imageUrl: imageUrl,
+      httpHeaders: {
+        'Authorization': 'Bearer ${TokenManager.accessToken}',
+      },
+      imageBuilder: (context, imageProvider) => _buildImage(
+        context,
+        imageProvider,
+      ),
+      progressIndicatorBuilder: (context, url, progress) =>
+          _buildPlaceholderImage(isLoading: true, context: context),
+      errorWidget: (context, url, error) =>
+          _buildPlaceholderImage(context: context),
     );
   }
 
@@ -113,16 +117,11 @@ class ApiImageWidget extends StatelessWidget {
         placeholderAssetPath ?? _getDefaultPlaceholderPath();
 
     return Container(
-      padding: placeholderPadding ?? Dimensions.paddingSmall,
       height: height,
       width: width,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: isMen == true
-            ? Colors.blue
-            : isMen == false
-                ? Colors.pink.shade300
-                : backgroundColor,
+        color: backgroundColor,
         borderRadius: isProfilePicture ? null : borderRadius,
         shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle,
       ),
@@ -131,7 +130,10 @@ class ApiImageWidget extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           isProfilePicture
-              ? Image.asset(finalPlaceholderPath, fit: fit)
+              ? Image.asset(
+                  finalPlaceholderPath,
+                  fit: fit,
+                )
               : isLoading
                   ? SpinKitDualRing(
                       color: Theme.of(context).colorScheme.primary)
@@ -147,24 +149,22 @@ class ApiImageWidget extends StatelessWidget {
 
   String _getDefaultPlaceholderPath() {
     if (isMen ?? false) {
-      return 'Assets.defaultMaleAvatar'; // Todo
+      return Assets.defaultMaleAvatar;
     } else {
-      return 'Assets.defaultFemaleAvatar';
+      return Assets.defaultFemaleAvatar;
     }
   }
 
   void _showImageViewer(BuildContext context, ImageProvider imageProvider) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => Scaffold(
-          appBar: AppBar(
-            title: const Text('image'),
-            backgroundColor: darkColor.withOpacity(0.5),
-            foregroundColor: lightColor,
-          ),
-          extendBodyBehindAppBar: true,
-          // body: PhotoView(imageProvider: imageProvider),
-        ),
+    navigateTo(
+      context,
+      ImageFileView(
+        folder: null,
+        imageFileMaterial: imageFilename ?? '',
+        imagePath: fileUrl,
+        isFile: false,
+        listOfImages: const [],
+        initialPage: 1,
       ),
     );
   }

@@ -8,6 +8,7 @@ import 'package:studiffy/ui/main/tab_more/settings/theme/theme_view_mdoel.dart';
 import 'package:studiffy/utils/app/app_utils.dart';
 
 import 'utils/app/preferences/theme_preferences.dart';
+import 'utils/view_models/profile_view_model.dart';
 
 void main() async {
   await AppUtils.executePreLaunch();
@@ -20,6 +21,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (context) => LanguageViewModel(context),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProfileViewModel(),
         ),
       ],
       child: const FlutterLocalization(),

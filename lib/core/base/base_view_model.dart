@@ -1,7 +1,9 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:studiffy/core/localization/loalisation.dart';
 
+import '../../utils/alert_utils.dart';
 import '../api/api_response.dart';
 import '../api/errors/api_exception.dart';
 import '../api/utils/pagination_response.dart';
@@ -74,16 +76,11 @@ abstract class BaseViewModel extends ChangeNotifier {
       } else {
         if (alertOnError) {
           if (context.mounted) {
-            // AlertUtils.showErrorDialog(
-            //   context: context,
-            //   title: _getErrorMessage(statusCode: jsonResponse.statusCode),
-            //   description: jsonResponse.message,
-            //   detailsFunction: () => _displayStack(
-            //     jsonResponse.errorDescription,
-            //     requestLog: jsonResponse.requestLog,
-            //     errorData: jsonResponse.errorData,
-            //   ),
-            // );
+            AlertUtils.show(
+                context: context,
+                title: _getErrorMessage(statusCode: jsonResponse.statusCode),
+                description: jsonResponse.message,
+                dialogType: DialogType.error);
           }
         }
 
@@ -97,14 +94,12 @@ abstract class BaseViewModel extends ChangeNotifier {
 
       if (exception is ApiException) {
         statusCode = exception.statusCode;
-        //TODO alert diagold
-        // AlertUtils.showErrorDialog(
-        //   title: _getErrorMessage(statusCode: statusCode),
-        //   description: exception.message,
-        //   detailsFunction: () => _displayStack(
-        //     '${exception.message}\n${stackTrace.toString()}',
-        //   ),
-        // );
+
+        AlertUtils.show(
+          title: _getErrorMessage(statusCode: statusCode),
+          description: exception.message,
+          dialogType: DialogType.error,
+        );
       }
 
       debugPrint('Network error : $exception');
@@ -163,15 +158,10 @@ abstract class BaseViewModel extends ChangeNotifier {
         await onSuccessWithMessage?.call(paginatedData, jsonResponse.message);
       } else {
         if (alertOnError) {
-          // AlertUtils.showErrorDialog(
-          //   title: _getErrorMessage(statusCode: jsonResponse.statusCode),
-          //   description: jsonResponse.message,
-          //   detailsFunction: () => _displayStack(
-          //     jsonResponse.errorDescription,
-          //     requestLog: jsonResponse.requestLog,
-          //     errorData: jsonResponse.errorData,
-          //   ),
-          // );
+          AlertUtils.show(
+              title: _getErrorMessage(statusCode: jsonResponse.statusCode),
+              description: jsonResponse.message,
+              dialogType: DialogType.error);
         }
 
         debugPrint('Backend responded with status = ${jsonResponse.status}');
@@ -185,13 +175,10 @@ abstract class BaseViewModel extends ChangeNotifier {
       if (exception is ApiException) {
         statusCode = exception.statusCode;
 
-        // AlertUtils.showErrorDialog(
-        //   title: _getErrorMessage(statusCode: statusCode),
-        //   description: exception.message,
-        //   detailsFunction: () => _displayStack(
-        //     '${exception.message}\n${stackTrace.toString()}',
-        //   ),
-        // );
+        AlertUtils.show(
+            title: _getErrorMessage(statusCode: statusCode),
+            description: exception.message,
+            dialogType: DialogType.error);
       }
 
       debugPrint('Network error : $exception');

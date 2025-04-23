@@ -134,7 +134,10 @@ class SplashScreenView extends StatelessWidget {
           children: [
             Text(
               intl.connectionError,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(color: Theme.of(context).colorScheme.error),
             ),
             Dimensions.heightLarge,
             TextButton(
@@ -144,10 +147,8 @@ class SplashScreenView extends StatelessWidget {
               onPressed: viewModel.retry,
               child: Text(
                 intl.retryButton,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(fontSize: 20),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontSize: 20, color: Theme.of(context).colorScheme.primary),
               ),
             ),
           ],

@@ -57,13 +57,14 @@ class MainView extends StatelessWidget {
     return Stack(
       children: [
         BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-          child: const SizedBox.shrink(),
+          filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+          child: const SizedBox(),
         ),
         const Drawer(
-          width: 300,
+          width: 280,
           clipBehavior: Clip.antiAlias,
-          child: MainDrawer(),
+          child: BackgroundImageSafeArea(
+              svgAsset: Assets.bgMain, child: MainDrawer()),
         ),
       ],
     );
@@ -85,7 +86,7 @@ class MainView extends StatelessWidget {
               selectedItemColor: Theme.of(context).colorScheme.onSurface,
               unselectedItemColor: Colors.grey,
               currentIndex: viewModel.tabController.index,
-              items: _buildBottomNavigationItems(tabCount, viewModel),
+              items: _buildBottomNavigationItems(tabCount, viewModel, context),
               onTap: viewModel.onChangeTabIndexNavBar,
             ),
           ),
@@ -95,7 +96,7 @@ class MainView extends StatelessWidget {
   }
 
   List<BottomNavigationBarItem> _buildBottomNavigationItems(
-      int tabCount, MainViewModel viewModel) {
+      int tabCount, MainViewModel viewModel, BuildContext context) {
     List<BottomNavigationBarItem> items = [
       BottomNavigationBarItem(
         icon: Icon(viewModel.tabController.index == 0
@@ -119,14 +120,12 @@ class MainView extends StatelessWidget {
                   color: Colors.red,
                   shape: BoxShape.circle,
                 ),
-                child: const Text(
-                  '4',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: Text('4',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        )),
               ),
             ),
           ],

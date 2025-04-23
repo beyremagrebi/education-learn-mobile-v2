@@ -4,10 +4,12 @@ import 'package:material_symbols_icons/material_symbols_icons.dart';
 import 'package:provider/provider.dart';
 import 'package:studiffy/core/constant/assets.dart';
 import 'package:studiffy/core/localization/loalisation.dart';
+import 'package:studiffy/utils/app/session/session_manager.dart';
 
 import 'package:studiffy/utils/view_models/main/main_drawer_view_mdoel.dart';
 
 import '../../../core/style/dimensions.dart';
+import '../../view_models/main/global_user_consumer.dart';
 import '../media/api_image_widget.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -82,34 +84,35 @@ class MainDrawer extends StatelessWidget {
       height: 35,
       margin: const EdgeInsets.symmetric(horizontal: Dimensions.m),
       child: ApiImageWidget(
-        imageFilename: Assets.logoStuddify(context),
-        isAsset: true,
-        backgroundColor: Colors.white,
-        placeholderPadding: Dimensions.paddingSmall,
+        imageFilename: SessionManager.user.imageFilename,
+        isMen: SessionManager.user.isMen,
+        fit: BoxFit.cover,
       ),
     );
   }
 
   Widget _buildUserDetails(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'beyrem agrebi',
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: Colors.white),
-        ),
-        Text(
-          'beyrem.agrebi@gmail.com',
-          style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: Colors.white),
-          overflow: TextOverflow.ellipsis,
-        ),
-      ],
+    return GlobalUserConsumer(
+      builder: (context, user) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${user.firstName} ${user.lastName}',
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(color: Colors.white),
+          ),
+          Text(
+            SessionManager.user.email ?? '',
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(color: Colors.white),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
     );
   }
 

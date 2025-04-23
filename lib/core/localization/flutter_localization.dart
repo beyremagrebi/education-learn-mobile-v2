@@ -27,25 +27,28 @@ class FlutterLocalization extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<ThemeViewModel, LanguageViewModel>(
-      builder: (context, themeNotifier, languageViewModel, child) {
-        return MaterialApp(
-          navigatorKey: _navigatorKey,
-          debugShowCheckedModeBanner: false,
-          locale: languageViewModel.locale,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: themeNotifier.themeMode,
-          title: 'studiffy',
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          onGenerateTitle: (context) {
-            intl = AppLocalizations.of(context);
-            return intl.appName;
-          },
-          home: const SplashScreenView(),
-        );
-      },
+    return GlobalProviders(
+      key: _globalProvidersKey,
+      child: Consumer2<ThemeViewModel, LanguageViewModel>(
+        builder: (context, themeNotifier, languageViewModel, child) {
+          return MaterialApp(
+            navigatorKey: _navigatorKey,
+            debugShowCheckedModeBanner: false,
+            locale: languageViewModel.locale,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeNotifier.themeMode,
+            title: 'studiffy',
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            onGenerateTitle: (context) {
+              intl = AppLocalizations.of(context);
+              return intl.appName;
+            },
+            home: const SplashScreenView(),
+          );
+        },
+      ),
     );
   }
 }

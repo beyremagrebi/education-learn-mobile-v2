@@ -10,6 +10,7 @@ class Assets {
   static const bgMain = '$_backgroundsDir/bg-main.svg';
 
   static const logoStudiffyLight = '$_logoDir/logo-light.png';
+  static const logoStudiffyDark = '$_logoDir/logo-dark.png';
   static const logoPstcLight = '$_logoDir/pstc-light-logo.png';
   static const logoPstcDark = '$_logoDir/pstc-dark-logo.png';
 
@@ -20,9 +21,7 @@ class Assets {
 
   static String logoStuddify(BuildContext context) {
     final brightness = Theme.of(context).brightness;
-    return brightness == Brightness.dark
-        ? logoStudiffyLight
-        : logoStudiffyLight; // TODO DARK
+    return brightness == Brightness.dark ? logoStudiffyDark : logoStudiffyLight;
   }
 
   static const _menuTabImages = '$_imageDir/menu_tab';
@@ -42,4 +41,7 @@ class Assets {
   static const studentIcon = '$_facilitySelectionDir/student-icon.png';
   static const typeFaculty = '$_facilitySelectionDir/type-faculty.png';
   static const typeTc = '$_facilitySelectionDir/type-tc.png';
+
+  static const defaultMaleAvatar = '$_imageDir/male.png';
+  static const defaultFemaleAvatar = '$_imageDir/female.png';
 }

@@ -50,7 +50,7 @@ class MainAppBar extends StatelessWidget {
         child: ApiImageWidget(
           backgroundColor: Colors.transparent,
           isAsset: true,
-          imageFilename: Assets.logoPstc(context),
+          imageFilename: Assets.logoStuddify(context),
           fit: BoxFit.contain,
         ));
   }

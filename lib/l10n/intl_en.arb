@@ -74,296 +74,359 @@
   "male": "Male",
   "female": "Female",
   "otherGender": "Other",
-  "@male": {
-    "description": "Gender option - male",
-    "type": "text",
-    "context": "gender"
-  },
-  "@female": {
-    "description": "Gender option - female",
-    "type": "text",
-    "context": "gender"
-  },
-  "@otherGender": {
-    "description": "Gender option - other/non-binary",
-    "type": "text",
-    "context": "gender"
-  },
-  "@support": {
-    "description": "Generic term for help/support section",
-    "type": "text",
-    "context": "navigation"
-  },
-  "@genericError": {
-    "description": "Generic error message used as fallback",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@fieldRequiredError": {
-    "description": "Validation error message for required form fields",
-    "type": "text",
-    "context": "formValidation"
-  },
-  "@unspecifiedValidationError": {
-    "description": "Fallback error message for unspecified validation errors",
-    "type": "text",
-    "context": "formValidation"
-  },
-  "@errorUnknown": {
-    "description": "Generic error message when error type cannot be determined",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorBadRequest": {
-    "description": "Error message for HTTP 400 Bad Request",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorUnauthorized": {
-    "description": "Error message for HTTP 401 Unauthorized",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorForbidden": {
-    "description": "Error message for HTTP 403 Forbidden",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorNotFound": {
-    "description": "Error message for HTTP 404 Not Found",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorMethodNotAllowed": {
-    "description": "Error message for HTTP 405 Method Not Allowed",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorRequestTimeout": {
-    "description": "Error message for HTTP 408 Request Timeout",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorConflict": {
-    "description": "Error message for HTTP 409 Conflict",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorPayloadTooLarge": {
-    "description": "Error message for HTTP 413 Payload Too Large",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorUnsupportedMediaType": {
-    "description": "Error message for HTTP 415 Unsupported Media Type",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorTooManyRequests": {
-    "description": "Error message for HTTP 429 Too Many Requests",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorTokenExpired": {
-    "description": "Error message for custom HTTP 498 Token Expired",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorInternalServer": {
-    "description": "Error message for HTTP 500 Internal Server Error",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorNotImplemented": {
-    "description": "Error message for HTTP 501 Not Implemented",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorBadGateway": {
-    "description": "Error message for HTTP 502 Bad Gateway",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorServiceUnavailable": {
-    "description": "Error message for HTTP 503 Service Unavailable",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorGatewayTimeout": {
-    "description": "Error message for HTTP 504 Gateway Timeout",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorClient": {
-    "description": "Generic error message for 4xx client errors",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorServer": {
-    "description": "Generic error message for 5xx server errors",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorConnectionFailed": {
-    "description": "Error message for connection failures",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorConnectionTimeout": {
-    "description": "Error message for connection timeouts",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorSendTimeout": {
-    "description": "Error message for request sending timeouts",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorReceiveTimeout": {
-    "description": "Error message for response receiving timeouts",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorBadCertificate": {
-    "description": "Error message for SSL certificate issues",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorRequestCancelled": {
-    "description": "Error message when request is cancelled",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorNoInternet": {
-    "description": "Error message when device is offline",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorNetwork": {
-    "description": "Generic network error message",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@errorTimeout": {
-    "description": "Error message for general timeout situations",
-    "type": "text",
-    "context": "errorMessages"
-  },
-  "@homeTab": {
-    "description": "Home tab label in bottom navigation"
-  },
-  "@chatTab": {
-    "description": "Chat tab label in bottom navigation"
-  },
-  "@courseTab": {
-    "description": "Course tab label in bottom navigation"
-  },
-  "@menuTab": {
-    "description": "Menu tab label in bottom navigation"
-  },
-  "@appName": {
-    "description": "App Name"
-  },
+  "superAdmin": "Super Admin",
+  "companyAdmin": "Company Admin",
+  "collaborator": "Collaborator",
+  "commercial": "Sales",
+  "instructor": "Instructor",
+  "responsible": "Manager",
+  "student": "Student",
+  "admin": "Administrator",
+  "editor": "Editor",
+  "userIdRequired": "User id is required",
+  "continueButton": "Continue",
+  "emailInvalid": "Email invalid",
+  "invalidUserDetails": "Invalid user details",
+  "userNotFound": "User with id {userId} is not found",
+  "userCouldNotBeSaved": "User could not be saved",
+  "sessionUserNull": "Session user is being used while null",
+  "tokenNoUserId": "Token does not contain user id",
+  "logout": "Logout",
+  "updateProfileDescription": "Here you can update your profile",
+  "noChangesToUpdate": "No changes to update",
+  "pleaseEnterYourFirstName": "Please enter your first name",
+  "pleaseEnterYourLastName": "Please enter your last name",
+  "pleaseEnterYourEmail": "Please enter your email",
+  "pleaseEnterYourPhoneNumber": "Please enter your phone number",
+  "pleaseEnterYourAddress": "Please enter your address",
+  "pleaseEnterYourPassword": "Please enter your password",
+  "editProfile": "Edit Profile",
+  "firstName": "First name",
+  "lastName": "Last name",
+  "email": "Email",
+  "phone": "Phone",
+  "address": "Address",
+  "saveChanges": "Save changes",
+  "@appName": {},
   "@signInTitle": {
-    "description": "App bar title for login screen"
+    "description": "Title for the sign in screen"
   },
   "@welcomeBack": {
-    "description": "Welcome heading text"
+    "description": "Welcome message shown when user returns"
   },
   "@signInToContinue": {
-    "description": "Subheading below welcome text"
+    "description": "Prompt for user to sign in"
   },
   "@emailLabel": {
     "description": "Label for email input field"
   },
   "@emailHint": {
-    "description": "Hint text for email input"
+    "description": "Hint text inside email input"
   },
   "@passwordLabel": {
     "description": "Label for password input field"
   },
   "@passwordHint": {
-    "description": "Hint text for password input"
+    "description": "Hint text inside password input"
   },
   "@rememberMe": {
-    "description": "Remember me checkbox label"
+    "description": "Checkbox label to remember user login"
   },
   "@forgotPassword": {
-    "description": "Forgot password link text"
+    "description": "Link for users to reset their password"
   },
   "@loginButton": {
-    "description": "Login button text"
+    "description": "Text for login button"
   },
   "@forgotPasswordTitle": {
     "description": "Title for forgot password screen"
   },
   "@serverInitializing": {
-    "description": "Message shown while waiting for server initialization"
+    "description": "Message shown when server is starting"
   },
   "@cancelButton": {
-    "description": "Cancel button text"
+    "description": "Label for cancel button"
   },
   "@connectionError": {
-    "description": "Error message when connection fails"
+    "description": "Shown when a connection error occurs"
   },
   "@retryButton": {
-    "description": "Retry button text"
+    "description": "Label for retry button"
+  },
+  "@homeTab": {
+    "description": "Label for home tab"
+  },
+  "@chatTab": {
+    "description": "Label for chat tab"
+  },
+  "@courseTab": {
+    "description": "Label for course tab"
+  },
+  "@menuTab": {
+    "description": "Label for menu tab"
   },
   "@scheduleMenu": {
-    "description": "Schedule menu item in More tab"
+    "description": "Menu item for schedule"
   },
   "@settingsMenu": {
-    "description": "Settings menu item in More tab"
+    "description": "Menu item for settings"
   },
   "@classMenu": {
-    "description": "Class menu item in More tab"
+    "description": "Menu item for class section"
   },
   "@classPageTitle": {
-    "description": "Title for Class page"
+    "description": "Title for the class page"
   },
   "@settingsTitle": {
-    "description": "Title of settings screen"
+    "description": "Title for the settings screen"
   },
   "@appThemeTitle": {
-    "description": "Title for theme setting option"
+    "description": "Title for app theme settings"
   },
   "@appThemeDescription": {
-    "description": "Description for theme setting"
+    "description": "Description for changing the theme"
   },
   "@languageTitle": {
-    "description": "Title for language setting option"
+    "description": "Title for language settings"
   },
   "@languageDescription": {
-    "description": "Description for language setting"
+    "description": "Description for changing the language"
   },
   "@themeTitle": {
-    "description": "Title of theme selection screen"
+    "description": "Title for theme options"
   },
   "@lightTheme": {
-    "description": "Light theme option label"
+    "description": "Option for light theme"
   },
   "@darkTheme": {
-    "description": "Dark theme option label"
+    "description": "Option for dark theme"
   },
   "@systemTheme": {
-    "description": "System default theme option label"
+    "description": "Option to use system theme"
   },
   "@englishLanguage": {
-    "description": "English language option"
+    "description": "Language name: English"
   },
   "@englishCountry": {
-    "description": "English country name"
+    "description": "Country for English language"
   },
   "@frenchLanguage": {
-    "description": "French language option"
+    "description": "Language name: French"
   },
   "@frenchCountry": {
-    "description": "French country name"
+    "description": "Country for French language"
   },
   "@arabicLanguage": {
-    "description": "Arabic language option"
+    "description": "Language name: Arabic"
   },
   "@arabicCountry": {
-    "description": "Arabic country name"
+    "description": "Country for Arabic language"
+  },
+  "@errorUnknown": {
+    "description": "Generic unknown error message"
+  },
+  "@errorBadRequest": {
+    "description": "Bad request error message"
+  },
+  "@errorUnauthorized": {
+    "description": "Unauthorized error message"
+  },
+  "@errorForbidden": {
+    "description": "Forbidden access error message"
+  },
+  "@errorNotFound": {
+    "description": "Resource not found error message"
+  },
+  "@errorMethodNotAllowed": {
+    "description": "HTTP method not allowed error"
+  },
+  "@errorRequestTimeout": {
+    "description": "Request timed out message"
+  },
+  "@errorConflict": {
+    "description": "Conflict error message"
+  },
+  "@errorPayloadTooLarge": {
+    "description": "Payload too large error"
+  },
+  "@errorUnsupportedMediaType": {
+    "description": "Unsupported media type error"
+  },
+  "@errorTooManyRequests": {
+    "description": "Too many requests error"
+  },
+  "@errorTokenExpired": {
+    "description": "Token expiration error message"
+  },
+  "@errorInternalServer": {
+    "description": "Internal server error message"
+  },
+  "@errorNotImplemented": {
+    "description": "Not implemented error"
+  },
+  "@errorBadGateway": {
+    "description": "Bad gateway error"
+  },
+  "@errorServiceUnavailable": {
+    "description": "Service unavailable error"
+  },
+  "@errorGatewayTimeout": {
+    "description": "Gateway timeout error"
+  },
+  "@errorClient": {
+    "description": "Client-side error message"
+  },
+  "@errorServer": {
+    "description": "Server-side error message"
+  },
+  "@errorConnectionFailed": {
+    "description": "Failed to connect error"
+  },
+  "@errorConnectionTimeout": {
+    "description": "Connection timeout error"
+  },
+  "@errorSendTimeout": {
+    "description": "Send request timeout error"
+  },
+  "@errorReceiveTimeout": {
+    "description": "Receive response timeout error"
+  },
+  "@errorBadCertificate": {
+    "description": "Bad certificate or SSL error"
+  },
+  "@errorRequestCancelled": {
+    "description": "Request cancelled by user"
+  },
+  "@errorNoInternet": {
+    "description": "No internet connection message"
+  },
+  "@errorNetwork": {
+    "description": "Network error message"
+  },
+  "@errorTimeout": {
+    "description": "Timeout error message"
+  },
+  "@fieldRequiredError": {
+    "description": "Field required validation message"
+  },
+  "@unspecifiedValidationError": {
+    "description": "Generic validation error"
+  },
+  "@genericError": {
+    "description": "Generic error title"
+  },
+  "@support": {
+    "description": "Support menu label"
+  },
+  "@male": {
+    "description": "Male gender label"
+  },
+  "@female": {
+    "description": "Female gender label"
+  },
+  "@otherGender": {
+    "description": "Other gender label"
+  },
+  "@superAdmin": {
+    "description": "Role: Super Admin"
+  },
+  "@companyAdmin": {
+    "description": "Role: Company Admin"
+  },
+  "@collaborator": {
+    "description": "Role: Collaborator"
+  },
+  "@commercial": {
+    "description": "Role: Sales/Commercial"
+  },
+  "@instructor": {
+    "description": "Role: Instructor"
+  },
+  "@responsible": {
+    "description": "Role: Manager"
+  },
+  "@student": {
+    "description": "Role: Student"
+  },
+  "@admin": {
+    "description": "Role: Administrator"
+  },
+  "@editor": {
+    "description": "Role: Editor"
+  },
+  "@userIdRequired": {
+    "description": "Message shown when user ID is missing"
+  },
+  "@continueButton": {
+    "description": "Label for continue button"
+  },
+  "@emailInvalid": {
+    "description": "Email format validation message"
+  },
+  "@invalidUserDetails": {
+    "description": "Invalid login credentials message"
+  },
+  "@userNotFound": {
+    "description": "Message when user is not found",
+    "placeholders": {
+      "userId": {}
+    }
+  },
+  "@userCouldNotBeSaved": {
+    "description": "User could not be saved to storage"
+  },
+  "@sessionUserNull": {
+    "description": "Session user accessed while null"
+  },
+  "@tokenNoUserId": {
+    "description": "Token missing user ID"
+  },
+  "@logout": {
+    "description": "Logout button label"
+  },
+  "@updateProfileDescription": {
+    "description": "Description text for editing user profile"
+  },
+  "@noChangesToUpdate": {
+    "description": "No changes made to profile"
+  },
+  "@pleaseEnterYourFirstName": {
+    "description": "Validation for first name input"
+  },
+  "@pleaseEnterYourLastName": {
+    "description": "Validation for last name input"
+  },
+  "@pleaseEnterYourEmail": {
+    "description": "Validation for email input"
+  },
+  "@pleaseEnterYourPhoneNumber": {
+    "description": "Validation for phone number input"
+  },
+  "@pleaseEnterYourAddress": {
+    "description": "Validation for address input"
+  },
+  "@pleaseEnterYourPassword": {
+    "description": "Validation for password input"
+  },
+  "@editProfile": {
+    "description": "Title for edit profile page"
+  },
+  "@firstName": {
+    "description": "Label for first name input"
+  },
+  "@lastName": {
+    "description": "Label for last name input"
+  },
+  "@email": {
+    "description": "Label for email input"
+  },
+  "@phone": {
+    "description": "Label for phone input"
+  },
+  "@address": {
+    "description": "Label for address input"
+  },
+  "@saveChanges": {
+    "description": "Button label for saving profile updates"
   }
 }

@@ -27,7 +27,7 @@ class TransparentShadowDecoration extends Decoration {
         blurRadius,
         inner,
         borderRadius,
-        shape, // Pass shape to the painter
+        shape,
       );
 }
 

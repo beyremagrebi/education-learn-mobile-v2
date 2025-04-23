@@ -34,13 +34,14 @@ class InputFormDecoration extends StatelessWidget {
             borderRadius: isCircular
                 ? BorderRadius.circular(300)
                 : Dimensions.largeBorderRadius,
-            color: shadowColor,
+            color: shadowColor ??
+                Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
             shape: isCircular ? BoxShape.circle : BoxShape.rectangle,
           ),
           child: Container(
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface.withOpacity(0.5),
+              color: Theme.of(context).colorScheme.surface.withOpacity(0.3),
               borderRadius: isCircular ? null : Dimensions.largeBorderRadius,
               shape: isCircular ? BoxShape.circle : BoxShape.rectangle,
             ),

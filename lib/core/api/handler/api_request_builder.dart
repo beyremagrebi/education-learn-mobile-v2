@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:studiffy/utils/app/session/token_manager.dart';
 
 import '../../../utils/file_utils.dart';
 import '../../base/base_api_file.dart';
@@ -19,15 +20,15 @@ class ApiRequestBuilder {
       'Content-Type': 'application/json; charset=utf-8',
     };
 
-    // if (authIsRequired) {
-    //   if (isForChild) {
-    //     headers['Authorization'] =
-    //         'Bearer ${ChildTokenManager.childaccessToken}';
-    //   } else {
-    //     await TokenManager.initialize();
-    //     headers['Authorization'] = 'Bearer ${TokenManager.accessToken}';
-    //   }
-    // }
+    if (authIsRequired) {
+      if (isForChild) {
+        // headers['Authorization'] =
+        //     'Bearer ${ChildTokenManager.childaccessToken}';
+      } else {
+        // await TokenManager.initialize();
+        headers['Authorization'] = 'Bearer ${TokenManager.accessToken}';
+      } // TODO CHILD
+    }
 
     return headers;
   }

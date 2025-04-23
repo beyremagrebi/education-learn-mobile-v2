@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:studiffy/core/localization/flutter_localization.dart';
 
 import 'package:studiffy/core/style/dimensions.dart';
 import 'package:studiffy/core/style/themes/app_text_styles.dart';
@@ -11,41 +12,43 @@ class AppTheme {
   static ThemeData get lightTheme => _lightTheme;
   static ThemeData get darkTheme => _darkTheme;
 
+  static bool get islight =>
+      Theme.of(mainContext).brightness == Brightness.light;
   // Light Theme Definition
   static final ThemeData _lightTheme = ThemeData(
-    brightness: Brightness.light,
-    scaffoldBackgroundColor: backgroundLight,
-    primaryColor: accentColorLight,
-    colorScheme: _lightColorScheme,
-    textTheme: AppTextStyles.textTheme,
-    appBarTheme: _appBarTheme(accentColorLight, textColorLight, true),
-    inputDecorationTheme: _inputDecorationTheme,
-    scrollbarTheme: _scrollbarTheme(accentColorLight),
-    filledButtonTheme: _filledButtonTheme(accentColorLight, lightColor, true),
-    elevatedButtonTheme: _elevatedButtonTheme(accentColorLight, true),
-    outlinedButtonTheme: _outlinedButtonTheme(accentColorLight, true),
-    textButtonTheme: _textButtonTheme(accentColorLight, true),
-    checkboxTheme: _checkboxTheme(darkColor, accentColorLight),
-    tabBarTheme: _tabBarTheme(accentColorLight, true),
-  );
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: backgroundLight,
+      primaryColor: accentColorLight,
+      colorScheme: _lightColorScheme,
+      textTheme: AppTextStyles.textTheme,
+      appBarTheme: _appBarTheme(accentColorLight, textColorLight, true),
+      inputDecorationTheme: _inputDecorationTheme,
+      scrollbarTheme: _scrollbarTheme(accentColorLight),
+      filledButtonTheme: _filledButtonTheme(accentColorLight, lightColor, true),
+      elevatedButtonTheme: _elevatedButtonTheme(accentColorLight, true),
+      outlinedButtonTheme: _outlinedButtonTheme(accentColorLight, true),
+      textButtonTheme: _textButtonTheme(accentColorLight, true),
+      checkboxTheme: _checkboxTheme(darkColor, accentColorLight),
+      tabBarTheme: _tabBarTheme(accentColorLight, true),
+      dialogTheme: _dilaogTheme(accentColorLight, true));
 
   // Dark Theme Definition
   static final ThemeData _darkTheme = ThemeData(
-    brightness: Brightness.dark,
-    scaffoldBackgroundColor: backgroundDark,
-    primaryColor: accentColorDark,
-    colorScheme: _darkColorScheme,
-    textTheme: AppTextStyles.textTheme,
-    appBarTheme: _appBarTheme(accentColorDark, textColorDark, false),
-    inputDecorationTheme: _inputDecorationTheme,
-    scrollbarTheme: _scrollbarTheme(accentColorDark),
-    filledButtonTheme: _filledButtonTheme(accentColorDark, darkColor, false),
-    elevatedButtonTheme: _elevatedButtonTheme(accentColorDark, false),
-    outlinedButtonTheme: _outlinedButtonTheme(accentColorDark, false),
-    textButtonTheme: _textButtonTheme(accentColorDark, false),
-    checkboxTheme: _checkboxTheme(lightColor, accentColorDark),
-    tabBarTheme: _tabBarTheme(accentColorDark, false),
-  );
+      brightness: Brightness.dark,
+      scaffoldBackgroundColor: backgroundDark,
+      primaryColor: accentColorDark,
+      colorScheme: _darkColorScheme,
+      textTheme: AppTextStyles.textTheme,
+      appBarTheme: _appBarTheme(accentColorDark, textColorDark, false),
+      inputDecorationTheme: _inputDecorationTheme,
+      scrollbarTheme: _scrollbarTheme(accentColorDark),
+      filledButtonTheme: _filledButtonTheme(accentColorDark, darkColor, false),
+      elevatedButtonTheme: _elevatedButtonTheme(accentColorDark, false),
+      outlinedButtonTheme: _outlinedButtonTheme(accentColorDark, false),
+      textButtonTheme: _textButtonTheme(accentColorDark, false),
+      checkboxTheme: _checkboxTheme(lightColor, accentColorDark),
+      tabBarTheme: _tabBarTheme(accentColorDark, false),
+      dialogTheme: _dilaogTheme(accentColorDark, false));
 
   // Color Schemes
   static const ColorScheme _lightColorScheme = ColorScheme.light(
@@ -281,6 +284,13 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         color: isLight ? Colors.grey.shade600 : Colors.grey.shade400,
       ),
+    );
+  }
+
+  static DialogTheme _dilaogTheme(Color primaryColor, bool isLight) {
+    return DialogTheme(
+      barrierColor: isLight ? Colors.grey.shade600 : Colors.grey.shade400,
+      backgroundColor: isLight ? Colors.grey.shade600 : Colors.grey.shade400,
     );
   }
 }

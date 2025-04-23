@@ -46,6 +46,8 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
   <key>CFBundleLocalizations</key>
+  <key>com.apple.security.files.user-selected.read-only</key>
+  <true/>
 <array>
     <string>en</string>
     <string>ar</string>

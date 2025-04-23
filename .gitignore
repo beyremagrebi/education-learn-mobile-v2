@@ -51,3 +51,6 @@ windows
 macos
 linux
 web
+
+#env
+.env

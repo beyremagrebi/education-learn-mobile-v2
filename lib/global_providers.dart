@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:studiffy/utils/view_models/notifications/notification_view_model.dart';
 
 class GlobalProviders extends StatefulWidget {
   final Widget child;
@@ -26,6 +27,14 @@ class GlobalProvidersState extends State<GlobalProviders> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(key: ObjectKey(userId), providers: const []);
+    return MultiProvider(
+      key: ObjectKey(userId),
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => NotificationViewModel(context),
+        ),
+      ],
+      child: widget.child,
+    );
   }
 }
