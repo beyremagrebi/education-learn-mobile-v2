@@ -31,6 +31,7 @@ class AuthService extends BaseService<User> {
       body: {
         'email': email.toLowerCase().replaceAll(' ', ''),
         'password': password,
+        'forMobile': true
       },
       dataKey: "payload",
       authIsRequired: false,
