@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:studiffy/core/localization/loalisation.dart';
 import 'package:studiffy/utils/app/session/session_manager.dart';
 import 'package:studiffy/utils/widgets/from/inputs/input_text.dart';
 
@@ -17,8 +18,9 @@ class StudentsView extends StatelessWidget {
         children: [
           InputText(
             controller: TextEditingController(),
-            hint: 'search',
-            label: 'search',
+            label: intl.searchLabel,
+            hint: intl.searchHint,
+            suffixIcon: Icons.search,
           ),
           Dimensions.heightLarge,
           Expanded(

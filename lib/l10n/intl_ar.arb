@@ -106,5 +106,12 @@
   "email": "البريد الإلكتروني",
   "phone": "رقم الهاتف",
   "address": "العنوان",
-  "saveChanges": "حفظ التغييرات"
+  "saveChanges": "حفظ التغييرات",
+  "tabPrivate": "خاص",
+  "tabGroup": "مجموعة",
+  "searchLabel": "بحث",
+  "searchHint": "ابحث عن الطلاب هنا",
+  "students": "الطلاب",
+  "subjects": "المواد",
+  "className": "اسم الصف"
 }

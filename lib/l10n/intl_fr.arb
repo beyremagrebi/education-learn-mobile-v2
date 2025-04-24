@@ -106,5 +106,12 @@
   "email": "E-mail",
   "phone": "Téléphone",
   "address": "Adresse",
-  "saveChanges": "Enregistrer les modifications"
+  "saveChanges": "Enregistrer les modifications",
+  "tabPrivate": "Privé",
+  "tabGroup": "Groupe",
+  "searchLabel": "Rechercher",
+  "searchHint": "Trouvez des étudiants ici",
+  "students": "Étudiants",
+  "subjects": "Sujets",
+  "className": "Nom de la classe"
 }
