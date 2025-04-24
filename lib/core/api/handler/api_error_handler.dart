@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:studiffy/core/localization/loalisation.dart';
 
+import '../../../utils/app/session/session_manager.dart';
+import '../../../utils/app/session/token_manager.dart';
 import '../api_response.dart';
 import '../errors/api_exception.dart';
 
@@ -150,8 +152,8 @@ class ApiErrorHandler {
 
   static Future<ApiResponse<Data>> _handleUnauthorized<Data>(
       {required dynamic body, required String requestLog}) async {
-    // await SessionManager.resetAndLogout(
-    //     errorAlertText: 'Session expired. Please login again.'); // TODO PROD
+    await SessionManager.logout(
+        errorAlertText: 'Session expired. Please login again.');
     return ApiResponse.error(
       statusCode: 401,
       message: _extractErrorMessage(body) ?? intl.errorTokenExpired,
@@ -250,7 +252,7 @@ class ApiErrorHandler {
 
   static Future<ApiResponse<Data>> _handleTokenExpired<Data>(
       dynamic body, String requestLog) async {
-    // await TokenManager.refresh(); // TODO TOKEN
+    await TokenManager.refresh();
     return ApiResponse.error(
       statusCode: 498,
       message: _extractErrorMessage(body) ?? intl.errorTokenExpired,

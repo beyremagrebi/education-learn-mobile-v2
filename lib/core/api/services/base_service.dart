@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../../utils/app/session/session_manager.dart';
 import '../../base/base_api_file.dart';
 import '../../base/base_model.dart';
 import '../api_response.dart';
@@ -8,7 +9,7 @@ import '../errors/dialod_exception.dart';
 import 'ap_endpoint.dart';
 
 abstract class BaseService<Model extends BaseModel> {
-  String get scholarshipConfigId => 'hello';
+  String get scholarshipConfigId => SessionManager.facility.scholarshipConfigId;
   String get childScholarshipConfigId => 'helllo';
 
   /// The base url of the api

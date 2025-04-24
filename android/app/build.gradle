@@ -25,7 +25,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace = "com.example.studiffy"
-    compileSdk  34//flutter.compileSdkVersion
+    compileSdk flutter.compileSdkVersion
     ndkVersion  "25.1.8937393" // flutter.ndkVersion
 
     compileOptions {

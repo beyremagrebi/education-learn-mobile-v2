@@ -6,7 +6,7 @@ class TokenManager {
   static Future<String?> saveTokenAndGetUserId(String token, String refToken) =>
       TokenService.saveTokenAndGetUserId(token, refToken);
 
-  // static Future<void> refresh() => TokenService.refresh();
+  static Future<void> refresh() => TokenService.refresh();
 
   static Future<void> reset() => TokenService.reset();
 

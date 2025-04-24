@@ -90,12 +90,21 @@ class FromJson {
     );
   }
 
-  static Enum? enumValue<Enum>(dynamic jsonValue, List<dynamic> values) {
+  static Enum? enumValue<Enum>(dynamic jsonValue, List<Enum> values) {
     if (jsonValue is String && jsonValue.isEmpty) return null;
 
     return _safeJsonOperation(
       jsonValue,
-      () => values.firstWhere((e) => e.databaseValue == jsonValue),
+      () {
+        try {
+          return values.firstWhere(
+            (e) => (e as dynamic).databaseValue == jsonValue,
+          );
+        } catch (e) {
+          debugPrint('Unknown enum value: $jsonValue');
+          return null;
+        }
+      },
     );
   }
 

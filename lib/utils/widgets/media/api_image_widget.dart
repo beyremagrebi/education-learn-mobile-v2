@@ -115,7 +115,8 @@ class ApiImageWidget extends StatelessWidget {
       {bool isLoading = false, required BuildContext context}) {
     String finalPlaceholderPath =
         placeholderAssetPath ?? _getDefaultPlaceholderPath();
-
+    final memCacheHeight = (width * Dimensions.dpr).round();
+    final memCacheWidth = (height * Dimensions.dpr).round();
     return Container(
       height: height,
       width: width,
@@ -133,11 +134,18 @@ class ApiImageWidget extends StatelessWidget {
               ? Image.asset(
                   finalPlaceholderPath,
                   fit: fit,
+                  cacheHeight: memCacheHeight,
+                  cacheWidth: memCacheWidth,
                 )
               : isLoading
                   ? SpinKitDualRing(
                       color: Theme.of(context).colorScheme.primary)
-                  : Image.asset(finalPlaceholderPath, fit: fit),
+                  : Image.asset(
+                      finalPlaceholderPath,
+                      fit: fit,
+                      cacheHeight: memCacheHeight,
+                      cacheWidth: memCacheWidth,
+                    ),
           if (isLoading && isProfilePicture)
             CircularProgressIndicator(
               backgroundColor: Colors.grey.shade300,

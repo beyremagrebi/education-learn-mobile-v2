@@ -66,6 +66,7 @@ class User extends BaseModel {
       this.uniqueNumber,
       this.website,
       this.zipCode,
+      this.facility,
       this.role,
       required this.imageFilename,
       this.cin});
@@ -76,6 +77,7 @@ class User extends BaseModel {
     if (map is String) return User.fromId(map);
     return User(
       id: FromJson.string(map['_id']),
+      facility: FromJson.model(map['facility'], Facility.fromMap),
       firstName: FromJson.string(map['firstName']),
       lastName: FromJson.string(map['lastName']),
       email: FromJson.string(map['email']),

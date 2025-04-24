@@ -7,6 +7,7 @@ import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../utils/app/session/token_manager.dart';
 import '../base/base_api_file.dart';
 import 'api_response.dart';
 import 'handler/api_error_handler.dart';
@@ -139,7 +140,7 @@ class ApiService {
     Dio dio, // Pass Dio instance here
   ) async {
     if (dioException.response?.statusCode == 498) {
-      // await TokenManager.refresh(); // TODO TOKEN
+      await TokenManager.refresh();
       final headers =
           await ApiRequestBuilder.buildHeaders(authIsRequired: authIsRequired);
       final response = await dio.request(

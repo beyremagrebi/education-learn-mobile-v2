@@ -1,5 +1,7 @@
+import 'package:studiffy/core/api/errors/dialod_exception.dart';
 import 'package:studiffy/core/api/utils/from_json.dart';
 import 'package:studiffy/core/extensions/extensions.dart';
+import 'package:studiffy/utils/app/session/session_manager.dart';
 
 import '../../core/base/base_model.dart';
 import '../../core/enums/facility_type.dart';
@@ -34,14 +36,20 @@ class Facility extends BaseModel {
 
   factory Facility.fromMap(map) {
     if (map is String) return Facility.fromId(map);
+    final parsedType = FromJson.enumValue(map['type'], FacilityType.values);
+
+    if (parsedType == null) {
+      SessionManager.logout(
+          errorAlertText: 'Unknown facility type: ${map['type']}');
+      throw DialogException('Unknown facility type: ${map['type']}');
+    }
 
     return Facility(
       id: FromJson.string(map['_id']),
       name: FromJson.string(map['name']) ?? 'unknown-facility',
       taxNumber: FromJson.string(map['serialNumber']),
       entreprise: FromJson.string(map['enterpriseId']),
-      type: FromJson.enumValue(map['type'], FacilityType.values) ??
-          FacilityType.unspecified,
+      type: parsedType,
       scholarshipConfigId: FromJson.string(map['scholarityConfigId']) ?? '',
     );
   }

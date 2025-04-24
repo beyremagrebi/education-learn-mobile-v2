@@ -15,6 +15,7 @@ import 'package:studiffy/utils/widgets/loading/loading_screen_view.dart';
 
 import '../../../../models/global/login_info.dart';
 import '../../../view_models/profile_view_model.dart';
+import 'session_facility_manager.dart';
 
 class SessionUserManager {
   static User? _user;
@@ -72,7 +73,7 @@ class SessionUserManager {
     }
 
     if (_user?.facility?.id != null) {
-      // todo facility
+      await SessionFacilityManager.saveFacility(_user?.facility?.id);
     }
 
     if (mainContext.mounted) {
