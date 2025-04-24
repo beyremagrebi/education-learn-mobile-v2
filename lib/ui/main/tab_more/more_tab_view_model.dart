@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studiffy/core/constant/assets.dart';
+import 'package:studiffy/ui/main/tab_more/class/class_view.dart';
 import 'package:studiffy/ui/main/tab_more/settings/settings_view.dart';
 import '../../../utils/view_models/tab_view_model.dart';
 
@@ -29,9 +30,7 @@ class MoreTabViewModel extends TabViewModel {
         'titleKey': 'classMenu',
         'backgroundAsset': Assets.menuBgRose,
         'icon': Icons.class_outlined,
-        'pageBuilder': (BuildContext context) => Scaffold(
-              appBar: AppBar(title: const Text('')),
-            ),
+        'pageBuilder': (BuildContext context) => const ClassView()
       },
     ];
 

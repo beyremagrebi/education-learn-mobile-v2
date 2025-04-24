@@ -9,8 +9,9 @@ const Color lightColor = Color(0xFFEFEFEF); // Light surface color
 const Color darkColor = Color(0xFF181818); // Dark surface color
 
 // Disabled colors
-const Color lightDisabledColor = Color(0xFFD3D3D3); // Light disabled color
-const Color darkDisabledColor = Color(0xFFA5A5A5); // Dark disabled color
+const Color darkDisabledColor = Color(0xFFD5D3D3); // Dark disabled color
+
+const Color lightDisabledColor = Color(0xFFA8A5A5); // Light disabled color
 
 // Primary accent colors
 const Color accentColorLight = Color(0xFF8774FE); // Light purple

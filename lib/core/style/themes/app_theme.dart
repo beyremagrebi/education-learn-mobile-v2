@@ -11,9 +11,11 @@ class AppTheme {
   // Theme Data Accessors
   static ThemeData get lightTheme => _lightTheme;
   static ThemeData get darkTheme => _darkTheme;
-
   static bool get islight =>
       Theme.of(mainContext).brightness == Brightness.light;
+  static Color get disabledColor =>
+      islight ? lightDisabledColor : darkDisabledColor;
+
   // Light Theme Definition
   static final ThemeData _lightTheme = ThemeData(
       brightness: Brightness.light,
@@ -272,18 +274,21 @@ class AppTheme {
       indicatorSize: TabBarIndicatorSize.tab,
       indicator: UnderlineTabIndicator(
         borderSide: BorderSide(
-          width: 4.5,
-          color: primaryColor,
+          width: 3,
+          color: isLight ? textColorLight : textColorDark,
         ),
         borderRadius: Dimensions.smallBorderRadius,
       ),
-      labelStyle: AppTextStyles.textTheme.titleSmall?.copyWith(
-        fontWeight: FontWeight.w900,
-      ),
+      labelStyle: AppTextStyles.textTheme.titleLarge?.copyWith(
+          fontSize: 16,
+          fontWeight: FontWeight.w900,
+          color: isLight ? textColorLight : textColorDark),
       unselectedLabelStyle: AppTextStyles.textTheme.titleSmall?.copyWith(
+        fontSize: 14,
         fontWeight: FontWeight.w400,
         color: isLight ? Colors.grey.shade600 : Colors.grey.shade400,
       ),
+      dividerColor: Colors.grey.shade400,
     );
   }
 
