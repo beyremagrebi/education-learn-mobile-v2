@@ -10,7 +10,6 @@ import '../core/localization/flutter_localization.dart';
 import '../core/style/responsive_dimensions.dart';
 import '../core/style/themes/app_colors.dart';
 
-import '../utils/widgets/media/api_image_widget.dart';
 import 'splash_screen_view_mdoel.dart';
 
 class SplashScreenView extends StatelessWidget {
@@ -67,15 +66,14 @@ class SplashScreenView extends StatelessWidget {
         );
       },
       onEnd: onAnimationComplete,
-      child: Container(
-        alignment: Alignment.center,
-        child: ApiImageWidget(
-          backgroundColor: Colors.transparent,
+      child: Padding(
+        padding: Dimensions.paddingHugeHorizontal,
+        child: Image.asset(
+          Assets.logoPstc(context),
           fit: BoxFit.contain,
-          width: 300,
-          height: 300,
-          imageFilename: Assets.logoPstc(context),
-          isAsset: true,
+          alignment: Alignment.center,
+          cacheHeight: 150,
+          cacheWidth: 580,
         ),
       ),
     );

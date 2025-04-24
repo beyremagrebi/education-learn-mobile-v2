@@ -62,20 +62,16 @@ class ApiImageWidget extends StatelessWidget {
   }
 
   Widget _buildAssetImage(BuildContext context) {
-    return SizedBox(
-      key: Key(imageFilename!),
-      height: height,
-      width: width,
-      child: _buildImage(context, AssetImage(imageFilename!)),
-    );
+    return _buildImage(context, AssetImage(imageFilename!));
   }
 
   Widget _buildCachedNetworkImage(BuildContext context) {
     final imageUrl = '${baseUrl ?? fileUrl}/$imageFilename';
+
+    final memCacheHeight = (width * Dimensions.dpr).round();
+    final memCacheWidth = (height * Dimensions.dpr).round();
     return CachedNetworkImage(
       key: Key(imageUrl),
-      height: height,
-      width: width,
       cacheKey: imageUrl,
       imageUrl: imageUrl,
       httpHeaders: {
@@ -83,7 +79,8 @@ class ApiImageWidget extends StatelessWidget {
       },
       imageBuilder: (context, imageProvider) => _buildImage(
         context,
-        imageProvider,
+        ResizeImage(imageProvider,
+            height: memCacheHeight, width: memCacheWidth),
       ),
       progressIndicatorBuilder: (context, url, progress) =>
           _buildPlaceholderImage(isLoading: true, context: context),
@@ -98,16 +95,19 @@ class ApiImageWidget extends StatelessWidget {
       onTap: hasImageViewer
           ? () => _showImageViewer(context, imageProvider)
           : null,
-      child: isProfilePicture
-          ? CircleAvatar(backgroundImage: imageProvider)
-          : Container(
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: borderRadius,
-              ),
-              child: Image(image: imageProvider, fit: fit),
-            ),
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: isProfilePicture ? null : borderRadius,
+            shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle),
+        child: Image(
+          image: imageProvider,
+          fit: fit,
+          height: height,
+          width: width,
+        ),
+      ),
     );
   }
 

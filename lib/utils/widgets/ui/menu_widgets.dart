@@ -38,12 +38,22 @@ class MenuWidget extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Image.asset(
-              menu!.backgroundAsset,
-              width: double.maxFinite,
-              height: double.maxFinite,
-              fit: BoxFit.cover,
-              colorBlendMode: BlendMode.darken,
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final screenWidth = constraints.maxWidth;
+                final screenHeight = constraints.maxHeight;
+                final dpr = MediaQuery.of(context).devicePixelRatio;
+
+                return Image.asset(
+                  menu!.backgroundAsset,
+                  width: screenWidth,
+                  height: screenHeight,
+                  fit: BoxFit.cover,
+                  colorBlendMode: BlendMode.darken,
+                  cacheWidth: (screenWidth * dpr).round(),
+                  cacheHeight: (screenHeight * dpr).round(),
+                );
+              },
             ),
             Container(
               alignment: AlignmentDirectional.topStart,

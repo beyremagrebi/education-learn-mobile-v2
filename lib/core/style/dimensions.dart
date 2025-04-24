@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:studiffy/core/localization/flutter_localization.dart';
 
 class Dimensions {
   static double screenHeight(BuildContext context) =>
@@ -6,6 +7,7 @@ class Dimensions {
 
   static double screenWidth(BuildContext context) =>
       MediaQuery.of(context).size.width;
+  static final dpr = MediaQuery.of(mainContext).devicePixelRatio;
 
   /// Small size
   static const double s = 5;

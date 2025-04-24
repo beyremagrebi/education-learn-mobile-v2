@@ -63,10 +63,20 @@ class EditProfileView extends StatelessWidget {
         children: [
           viewModel.file != null
               ? ClipOval(
-                  child: Image.file(
-                    viewModel.file!,
-                    width: MediaQuery.of(context).size.width * (0.40),
-                    height: MediaQuery.of(context).size.width * (0.40),
+                  child: Image(
+                    image: ResizeImage(
+                      FileImage(viewModel.file!),
+                      width: (MediaQuery.of(context).size.width *
+                              0.40 *
+                              Dimensions.dpr)
+                          .round(),
+                      height: (MediaQuery.of(context).size.width *
+                              0.40 *
+                              Dimensions.dpr)
+                          .round(),
+                    ),
+                    width: MediaQuery.of(context).size.width * 0.40,
+                    height: MediaQuery.of(context).size.width * 0.40,
                     fit: BoxFit.cover,
                   ),
                 )

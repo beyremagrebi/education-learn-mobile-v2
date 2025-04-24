@@ -38,12 +38,14 @@ class MainDrawer extends StatelessWidget {
   Widget _buildLogo(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 15),
-      child: ApiImageWidget(
-        imageFilename: Assets.logoPstc(context),
-        isAsset: true,
+      child: Image.asset(
+        Assets.logoPstc(context),
         fit: BoxFit.contain,
-        backgroundColor: Colors.transparent,
+        alignment: Alignment.center,
+        width: 100,
         height: 30,
+        cacheWidth: 210,
+        cacheHeight: 50,
       ),
     );
   }
@@ -86,6 +88,7 @@ class MainDrawer extends StatelessWidget {
       child: ApiImageWidget(
         imageFilename: SessionManager.user.imageFilename,
         isMen: SessionManager.user.isMen,
+        hasImageViewer: true,
         fit: BoxFit.cover,
       ),
     );

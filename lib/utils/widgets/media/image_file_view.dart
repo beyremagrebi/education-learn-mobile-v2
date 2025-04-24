@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studiffy/core/constant/assets.dart';
+import 'package:studiffy/core/style/dimensions.dart';
 
 import 'package:studiffy/utils/custum_circular_progress.dart';
 import 'package:studiffy/utils/view_models/media/image_file_viw_model.dart';
@@ -54,6 +55,16 @@ class ImageFileView extends StatelessWidget {
                             imagePath: '$imagePath/$imageFileMaterial',
                             isFile: isFile,
                             boxFit: BoxFit.contain,
+                            imageBuilder: (context, imageProvider) => Image(
+                                  image: ResizeImage(imageProvider,
+                                      height: (Dimensions.dpr *
+                                              Dimensions.screenHeight(context) *
+                                              0.5)
+                                          .round(),
+                                      width: (Dimensions.dpr *
+                                              Dimensions.screenWidth(context))
+                                          .round()),
+                                ),
                             errorWidget: (context, url, error) => const Center(
                                   child: Text('error to load image'),
                                 ),

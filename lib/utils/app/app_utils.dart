@@ -8,6 +8,7 @@ class AppUtils {
   static Future<void> executePreLaunch() async {
     try {
       WidgetsFlutterBinding.ensureInitialized();
+      debugInvertOversizedImages = true;
       await dotenv.load(fileName: ".env");
       await _disableScreenshot();
     } catch (err) {
