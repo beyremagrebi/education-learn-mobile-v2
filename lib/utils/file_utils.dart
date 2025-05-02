@@ -28,6 +28,7 @@ class FileUtils {
     'ico',
     'cur',
   ];
+
   static List<String> videoExtensions = [
     'mp4',
     'avi',
@@ -47,6 +48,37 @@ class FileUtils {
     'vob',
   ];
 
+  static List<String> pdfExtensions = ['pdf'];
+
+  static List<String> pptExtensions = [
+    'ppt',
+    'pptx',
+    'pps',
+    'ppsx',
+    'pot',
+    'potx',
+    'odp'
+  ];
+
+  static List<String> wordExtensions = [
+    'doc',
+    'docx',
+    'dot',
+    'dotx',
+    'odt',
+    'rtf',
+    'wpd'
+  ];
+
+  static List<String> excelExtensions = [
+    'xls',
+    'xlsx',
+    'xlsm',
+    'xlsb',
+    'csv',
+    'ods'
+  ];
+
   static bool isImage(String filename) {
     return imageExtensions.contains(
       getExtension(filename.toLowerCase()),
@@ -55,6 +87,22 @@ class FileUtils {
 
   static bool isVideo(String filename) {
     return videoExtensions.contains(getExtension(filename.toLowerCase()));
+  }
+
+  static bool isPdf(String filename) {
+    return pdfExtensions.contains(getExtension(filename.toLowerCase()));
+  }
+
+  static bool isPpt(String filename) {
+    return pptExtensions.contains(getExtension(filename.toLowerCase()));
+  }
+
+  static bool isWord(String filename) {
+    return wordExtensions.contains(getExtension(filename.toLowerCase()));
+  }
+
+  static bool isExcel(String filename) {
+    return excelExtensions.contains(getExtension(filename.toLowerCase()));
   }
 
   static String getExtension(String fileName) {
