@@ -5,11 +5,12 @@ import '../../../../../../core/style/dimensions.dart';
 import '../../../../../../models/global/user/user.dart';
 import '../../../../../../utils/navigator_utils.dart';
 import '../../../../../../utils/widgets/media/api_image_widget.dart';
+import '../student_details_view.dart';
 
-class StudentGridCard extends StatelessWidget {
+class StudentCard extends StatelessWidget {
   final User student;
 
-  const StudentGridCard({
+  const StudentCard({
     super.key,
     required this.student,
   });
@@ -23,11 +24,16 @@ class StudentGridCard extends StatelessWidget {
     return InkWell(
       onTap: () => navigateTo(
           context,
-          Scaffold(
-            appBar: AppBar(),
+          StudentDetailsView(
+            student: student,
           )),
       child: Container(
-        margin: Dimensions.paddingMedium,
+        padding: const EdgeInsets.all(12),
+        margin: const EdgeInsets.symmetric(vertical: 6),
+        decoration: BoxDecoration(
+          color: AppTheme.islight ? Colors.white60 : Colors.black12,
+          borderRadius: Dimensions.mediumBorderRadius,
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -35,8 +41,8 @@ class StudentGridCard extends StatelessWidget {
             ApiImageWidget(
               imageFilename: student.imageFilename,
               isMen: student.isMen,
-              width: 40,
-              height: 40,
+              width: 48,
+              height: 48,
               hasImageViewer: true,
               fit: BoxFit.cover,
             ),
@@ -52,8 +58,7 @@ class StudentGridCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium!.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.onSurface,
-                          fontSize: 15,
+                          fontSize: 16,
                         ),
                   ),
                   Text(
@@ -62,7 +67,7 @@ class StudentGridCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium!.copyWith(
                           color: AppTheme.disabledColor,
-                          fontSize: 13,
+                          fontSize: 12,
                         ),
                   ),
                 ],

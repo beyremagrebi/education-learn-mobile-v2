@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:studiffy/core/constant/assets.dart';
 
 import '../../../utils/widgets/background_image_safe_area.dart';

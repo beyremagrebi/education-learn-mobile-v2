@@ -13,6 +13,7 @@ class ImageFileView extends StatelessWidget {
   final String imageFileMaterial;
   final List<String> listOfImages;
   final bool isFile;
+  final bool isAsset;
   final int? initialPage;
   final String? folder;
   final String imagePath;
@@ -23,6 +24,7 @@ class ImageFileView extends StatelessWidget {
       required this.listOfImages,
       required this.isFile,
       this.initialPage,
+      this.isAsset = false,
       required this.folder,
       required this.imagePath});
 
@@ -52,8 +54,11 @@ class ImageFileView extends StatelessWidget {
                       child: Container(
                         alignment: Alignment.center,
                         child: CommonImageWidget(
-                            imagePath: '$imagePath/$imageFileMaterial',
+                            imagePath: isAsset
+                                ? imagePath
+                                : '$imagePath/$imageFileMaterial',
                             isFile: isFile,
+                            isAsset: isAsset,
                             boxFit: BoxFit.contain,
                             imageBuilder: (context, imageProvider) => Image(
                                   image: ResizeImage(imageProvider,

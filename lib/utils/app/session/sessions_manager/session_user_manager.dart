@@ -5,8 +5,10 @@ import 'package:studiffy/core/api/services/global/user_service.dart';
 import 'package:studiffy/core/localization/flutter_localization.dart';
 import 'package:studiffy/core/localization/loalisation.dart';
 import 'package:studiffy/models/global/user/user.dart';
+import 'package:studiffy/models/global/user/user_role.dart';
 import 'package:studiffy/ui/splash_screen_view.dart';
 import 'package:studiffy/utils/alert_utils.dart';
+import 'package:studiffy/utils/app/session/sessions_manager/session_role_manager.dart';
 import 'package:studiffy/utils/app/session/token_manager.dart';
 import 'package:studiffy/utils/app/session/user_session/payment_preference.dart';
 import 'package:studiffy/utils/app/session/user_session/user_preference.dart';
@@ -35,7 +37,7 @@ class SessionUserManager {
     if (userId != null) {
       final jsonResponse = await UserService.shared.getById(userId);
       if (jsonResponse.status) {
-        _user = jsonResponse.resolveData(User.fromMap);
+        _user = jsonResponse.resolveSingle(User.fromMap);
       } else {
         throw DialogException(intl.userNotFound(userId));
       }
@@ -73,12 +75,28 @@ class SessionUserManager {
     }
 
     if (_user?.facility?.id != null) {
-      await SessionFacilityManager.saveFacility(_user?.facility?.id);
+      await SessionFacilityManager.saveFacility(user.facility?.id);
+      await handleUserRole(user);
     }
 
     if (mainContext.mounted) {
       mainContext.read<ProfileViewModel>().updateUser(user);
     }
+  }
+
+  static Future<void> handleUserRole(User user) async {
+    switch (user.role) {
+      case UserRole.student:
+        await handleStudent(user);
+        break;
+      default:
+        break;
+    }
+  }
+
+  static Future<void> handleStudent(User user) async {
+    final classValue = await SessionRoleManager.handleStudent(user);
+    _user?.classe = classValue;
   }
 
   static bool checkUserExist() {
@@ -115,6 +133,60 @@ class SessionUserManager {
       }
 
       mainContext.read<ProfileViewModel>().clearUser();
+    }
+  }
+
+  static T valueByRole<T>({
+    required T companyAdmin,
+    required T superAdmin,
+    required T collaborator,
+    required T instructor,
+    required T student,
+    required T responsible,
+  }) {
+    switch (user.role) {
+      case UserRole.companyAdmin:
+        return companyAdmin;
+      case UserRole.student:
+        return student;
+      case UserRole.collaborator:
+        return collaborator;
+      case UserRole.instructor:
+        return instructor;
+      case UserRole.responsible:
+      case UserRole.superAdmin:
+        return superAdmin;
+      default:
+        throw DialogException(
+          "Role '${_user?.role?.name}' not implemented yet.",
+        );
+    }
+  }
+
+  static T functionByRole<T>({
+    required T Function() companyAdmin,
+    required T Function() superAdmin,
+    required T Function() collaborator,
+    required T Function() instructor,
+    required T Function() student,
+    required T Function() responsible,
+  }) {
+    switch (_user?.role) {
+      case UserRole.companyAdmin:
+        return companyAdmin.call();
+      case UserRole.student:
+        return student.call();
+      case UserRole.collaborator:
+        return collaborator.call();
+      case UserRole.instructor:
+        return instructor.call();
+      case UserRole.responsible:
+      case UserRole.superAdmin:
+        return superAdmin.call();
+      default:
+        throw DialogException(
+          "Action for '${_user?.role?.name}' not implemented yet.",
+        );
     }
   }
 }

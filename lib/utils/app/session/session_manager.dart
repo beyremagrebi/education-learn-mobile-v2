@@ -59,4 +59,41 @@ class SessionManager {
           dialogType: DialogType.error);
     }
   }
+
+  static T valueByRole<T>({
+    required T companyAdmin,
+    required T superAdmin,
+    required T collaborator,
+    required T instructor,
+    required T student,
+    required T responsible,
+  }) {
+    return SessionUserManager.valueByRole(
+      companyAdmin: companyAdmin,
+      superAdmin: superAdmin,
+      collaborator: collaborator,
+      instructor: instructor,
+      student: student,
+      responsible: responsible,
+    );
+  }
+
+  // Get function based on user role
+  static T functionByRole<T>({
+    required T Function() companyAdmin,
+    required T Function() superAdmin,
+    required T Function() collaborator,
+    required T Function() instructor,
+    required T Function() student,
+    required T Function() responsible,
+  }) {
+    return SessionUserManager.functionByRole(
+      companyAdmin: companyAdmin,
+      superAdmin: superAdmin,
+      collaborator: collaborator,
+      instructor: instructor,
+      student: student,
+      responsible: responsible,
+    );
+  }
 }

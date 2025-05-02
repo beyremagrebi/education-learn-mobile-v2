@@ -9,8 +9,11 @@ import '../errors/dialod_exception.dart';
 import 'ap_endpoint.dart';
 
 abstract class BaseService<Model extends BaseModel> {
-  String get scholarshipConfigId => SessionManager.facility.scholarshipConfigId;
+  String get scholarshipConfigId =>
+      SessionManager.facility.scholarshipConfigId?.id ?? '';
   String get childScholarshipConfigId => 'helllo';
+
+  String get institution => SessionManager.facility.type.endpoint;
 
   /// The base url of the api
   String get apiUrl;

@@ -17,7 +17,7 @@ class SessionFacilityManager {
     if (facilityId != null) {
       final jsonResponse = await FacilityService.shared.getById(facilityId);
       if (jsonResponse.status) {
-        _facility = jsonResponse.resolveData(Facility.fromMap);
+        _facility = jsonResponse.resolveSingle(Facility.fromMap);
       } else {
         throw DialogException('Facility with id $facilityId is not found');
       }

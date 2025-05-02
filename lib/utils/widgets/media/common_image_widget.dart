@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../core/style/dimensions.dart';
 import '../../custum_circular_progress.dart';
 
 class CommonImageWidget extends StatelessWidget {
@@ -66,6 +67,13 @@ class CommonImageWidget extends StatelessWidget {
                   )
                 : Image.asset(
                     imagePath,
+                    cacheHeight: (Dimensions.dpr *
+                            Dimensions.screenHeight(context) *
+                            0.5)
+                        .round(),
+                    cacheWidth:
+                        (Dimensions.dpr * Dimensions.screenWidth(context))
+                            .round(),
                     fit: boxFit,
                   )
             : imagePath.split('.').last.toLowerCase() == 'svg'
@@ -76,6 +84,13 @@ class CommonImageWidget extends StatelessWidget {
                 : Image.file(
                     File(imagePath),
                     fit: boxFit,
+                    cacheHeight: (Dimensions.dpr *
+                            Dimensions.screenHeight(context) *
+                            0.5)
+                        .round(),
+                    cacheWidth:
+                        (Dimensions.dpr * Dimensions.screenWidth(context))
+                            .round(),
                   );
   }
 }

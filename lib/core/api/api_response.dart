@@ -69,6 +69,28 @@ class ApiResponse<Data> {
     }
   }
 
+  Model? resolveSingle<Model extends BaseModel>(
+    Model Function(Map<String, dynamic>) fromMapFunction,
+  ) {
+    if (data == null) return null;
+    if (data is! Map<String, dynamic>) {
+      debugPrint('Data is not a Map<String, dynamic>');
+      return null;
+    }
+    return fromMapFunction(data as Map<String, dynamic>);
+  }
+
+  List<Model>? resolveList<Model extends BaseModel>(
+    Model Function(Map<String, dynamic>) fromMapFunction,
+  ) {
+    if (data == null) return null;
+    if (data is! List) {
+      debugPrint('Data is not a List');
+      return null;
+    }
+    return (data as List).map<Model>((e) => fromMapFunction(e)).toList();
+  }
+
   Model? resolveDataPagination<Model>(
       Model Function(Map<String, dynamic>) fromMap) {
     if (data != null && data is Map<String, dynamic>) {

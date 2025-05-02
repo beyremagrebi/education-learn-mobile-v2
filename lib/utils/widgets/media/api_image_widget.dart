@@ -92,9 +92,7 @@ class ApiImageWidget extends StatelessWidget {
   Widget _buildImage(BuildContext context, ImageProvider imageProvider) {
     return InkWell(
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
-      onTap: hasImageViewer
-          ? () => _showImageViewer(context, imageProvider)
-          : null,
+      onTap: hasImageViewer ? () => _showImageViewer(context) : null,
       child: Container(
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
@@ -113,44 +111,54 @@ class ApiImageWidget extends StatelessWidget {
 
   Widget _buildPlaceholderImage(
       {bool isLoading = false, required BuildContext context}) {
+    if (isMen == null && placeholderAssetPath == null) {
+      return Icon(
+        Icons.image,
+        size: height,
+      );
+    }
     String finalPlaceholderPath =
         placeholderAssetPath ?? _getDefaultPlaceholderPath();
+
     final memCacheHeight = (width * Dimensions.dpr).round();
     final memCacheWidth = (height * Dimensions.dpr).round();
-    return Container(
-      height: height,
-      width: width,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: isProfilePicture ? null : borderRadius,
-        shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle,
-      ),
-      child: Stack(
-        fit: StackFit.expand,
-        alignment: Alignment.center,
-        children: [
-          isProfilePicture
-              ? Image.asset(
-                  finalPlaceholderPath,
-                  fit: fit,
-                  cacheHeight: memCacheHeight,
-                  cacheWidth: memCacheWidth,
-                )
-              : isLoading
-                  ? SpinKitDualRing(
-                      color: Theme.of(context).colorScheme.primary)
-                  : Image.asset(
-                      finalPlaceholderPath,
-                      fit: fit,
-                      cacheHeight: memCacheHeight,
-                      cacheWidth: memCacheWidth,
-                    ),
-          if (isLoading && isProfilePicture)
-            CircularProgressIndicator(
-              backgroundColor: Colors.grey.shade300,
-            ),
-        ],
+    return InkWell(
+      onTap: () => _showImageViewer(context, isAsset: true),
+      child: Container(
+        height: height,
+        width: width,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: isProfilePicture ? null : borderRadius,
+          shape: isProfilePicture ? BoxShape.circle : BoxShape.rectangle,
+        ),
+        child: Stack(
+          fit: StackFit.expand,
+          alignment: Alignment.center,
+          children: [
+            isProfilePicture
+                ? Image.asset(
+                    finalPlaceholderPath,
+                    fit: fit,
+                    cacheHeight: memCacheHeight,
+                    cacheWidth: memCacheWidth,
+                  )
+                : isLoading
+                    ? SpinKitDualRing(
+                        color: Theme.of(context).colorScheme.primary)
+                    : Image.asset(
+                        finalPlaceholderPath,
+                        fit: fit,
+                        cacheHeight: memCacheHeight,
+                        cacheWidth: memCacheWidth,
+                      ),
+            if (isLoading && isProfilePicture)
+              CircularProgressIndicator(
+                backgroundColor: Colors.grey.shade300,
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -163,14 +171,16 @@ class ApiImageWidget extends StatelessWidget {
     }
   }
 
-  void _showImageViewer(BuildContext context, ImageProvider imageProvider) {
+  void _showImageViewer(BuildContext context,
+      {bool isAsset = false, bool isFile = false}) {
     navigateTo(
       context,
       ImageFileView(
         folder: null,
         imageFileMaterial: imageFilename ?? '',
-        imagePath: fileUrl,
-        isFile: false,
+        imagePath: isAsset ? _getDefaultPlaceholderPath() : fileUrl,
+        isFile: isFile,
+        isAsset: isAsset,
         listOfImages: const [],
         initialPage: 1,
       ),

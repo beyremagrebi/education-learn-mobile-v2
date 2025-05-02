@@ -1,6 +1,7 @@
 import 'package:studiffy/core/api/errors/dialod_exception.dart';
 import 'package:studiffy/core/api/utils/from_json.dart';
 import 'package:studiffy/core/extensions/extensions.dart';
+import 'package:studiffy/models/global/scholirty_config/training_center_config.dart';
 import 'package:studiffy/utils/app/session/session_manager.dart';
 
 import '../../core/base/base_model.dart';
@@ -10,7 +11,7 @@ class Facility extends BaseModel {
   String name;
   String? taxNumber;
   FacilityType type;
-  String scholarshipConfigId;
+  TrainingCenterConfig? scholarshipConfigId;
   String? entreprise;
 
   @override
@@ -22,7 +23,7 @@ class Facility extends BaseModel {
     this.taxNumber,
     this.entreprise,
     required this.type,
-    this.scholarshipConfigId = '',
+    this.scholarshipConfigId,
   });
 
   bool get isTrainingCenter => type == FacilityType.trainingCenter;
@@ -30,7 +31,6 @@ class Facility extends BaseModel {
   Facility.fromId(
     String? id, {
     this.name = 'unknown-facility',
-    this.scholarshipConfigId = '',
     this.type = FacilityType.unspecified,
   }) : super(id: id);
 
@@ -50,7 +50,8 @@ class Facility extends BaseModel {
       taxNumber: FromJson.string(map['serialNumber']),
       entreprise: FromJson.string(map['enterpriseId']),
       type: parsedType,
-      scholarshipConfigId: FromJson.string(map['scholarityConfigId']) ?? '',
+      scholarshipConfigId: FromJson.model(
+          map['scholarityConfigId'], TrainingCenterConfig.fromMap),
     );
   }
 

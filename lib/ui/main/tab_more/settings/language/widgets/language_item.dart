@@ -65,8 +65,10 @@ class LanguageItem extends StatelessWidget {
                 ),
                 child: Image.asset(
                   flagAsset,
-                  height: 60,
-                  width: 60 * 4 / 3,
+                  height: 40,
+                  width: 40 * 4 / 3,
+                  cacheHeight: 40,
+                  cacheWidth: 40 * 4 ~/ 3,
                   fit: BoxFit.fill,
                 ),
               ),

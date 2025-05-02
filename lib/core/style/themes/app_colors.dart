@@ -40,3 +40,13 @@ const Color barrierColorLight =
     Color(0x80000000); // Semi-transparent black for light theme
 const Color barrierColorDark =
     Color(0x80FFFFFF); // Semi-transparent white for dark theme
+
+// Dark theme shimmer colors
+final Color darkShimmerBaseColor = Colors.grey.shade300;
+final Color darkShimmerHighlightColor = Colors.grey.shade500;
+final Color darkShimmerContentColor = Colors.white.withOpacity(0.85);
+
+// Light theme shimmer colors
+final Color lightShimmerBaseColor = Colors.grey.shade600;
+final Color lightShimmerHighlightColor = Colors.grey.shade400;
+final Color lightShimmerContentColor = Colors.grey.shade400.withOpacity(0.6);
