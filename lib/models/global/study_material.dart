@@ -20,7 +20,7 @@ class StudyMaterial extends BaseModel {
   factory StudyMaterial.fromMap(map) {
     if (map is String) return StudyMaterial.fromId(map);
     return StudyMaterial(
-      id: '',
+      id: FromJson.string(map['_id']),
       displayName: FromJson.string(map['displayName']),
       fileName: FromJson.string(map['fileName']),
     );

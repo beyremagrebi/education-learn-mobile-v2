@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studiffy/core/api/services/training_center/lesson_services.dart';
 import 'package:studiffy/core/api/services/training_center/subject_services.dart';
-import 'package:studiffy/models/training_center/lesson/lesson.dart';
 
 import '../../../../../core/base/base_view_model.dart';
 import '../../../../../models/global/study_material.dart';
@@ -14,7 +13,6 @@ class SubjectDetailsViewModel extends BaseViewModel {
   }
 
   Subject? subject;
-  List<Lesson>? lessons;
 
   Future<void> loadData() async {
     try {
@@ -23,7 +21,7 @@ class SubjectDetailsViewModel extends BaseViewModel {
         apiCall: SubjectServices.shared.getById(subjectId),
         onSuccess: (data) async {
           subject = data;
-          await loadLesson();
+          await loadResource();
         },
       );
     } catch (err) {
@@ -33,14 +31,13 @@ class SubjectDetailsViewModel extends BaseViewModel {
     }
   }
 
-  Future<void> loadLesson() async {
+  Future<void> loadResource() async {
     try {
       await makeApiCall(
-        fromMapFunction: Lesson.fromMap,
-        apiCall: LessonServices.shared.getLessonBySubject(subjectId),
+        fromMapFunction: StudyMaterial.fromMap,
+        apiCall: LessonServices.shared.getResourceBySubject(subjectId),
         onSuccess: (data) {
-          lessons = data;
-          loadResourceBylesson();
+          resourceList = data;
         },
       );
     } catch (err) {
@@ -51,18 +48,4 @@ class SubjectDetailsViewModel extends BaseViewModel {
   }
 
   List<StudyMaterial>? resourceList;
-  loadResourceBylesson() {
-    if (lessons == null) return [];
-
-    final allMaterials = <StudyMaterial>[];
-
-    for (final lesson in lessons!) {
-      if (lesson.chapters == null) continue;
-      for (final chapter in lesson.chapters!) {
-        allMaterials.addAll(chapter.studyMaterials ?? []);
-      }
-    }
-
-    resourceList = allMaterials;
-  }
 }

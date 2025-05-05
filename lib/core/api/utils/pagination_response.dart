@@ -18,9 +18,9 @@ class PaginatedResponse<Model extends BaseModel> {
       Map<String, dynamic> map, Model Function(dynamic) fromMap) {
     return PaginatedResponse(
       data: FromJson.modelList(map['data'], fromMap),
-      totalData: FromJson.integer(map['totalData']),
-      totalPages: FromJson.integer(map['totalPages']),
-      currentPage: FromJson.integer(map['currentPage']),
+      totalData: FromJson.integer(map['pagination']['total']),
+      totalPages: FromJson.integer(map['pagination']['totalPages']),
+      currentPage: FromJson.integer(map['pagination']['page']),
     );
   }
 }

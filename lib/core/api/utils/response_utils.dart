@@ -113,6 +113,6 @@ class ResponseUtils {
     Map<String, dynamic> data, {
     required String dataKey,
   }) {
-    return (data.containsKey('totalPages') || data.containsKey('currentPage'));
+    return (data.containsKey('pagination') || data.containsKey('page'));
   }
 }

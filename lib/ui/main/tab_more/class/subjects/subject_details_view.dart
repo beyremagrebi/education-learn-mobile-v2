@@ -136,7 +136,7 @@ class SubjectDetailsView extends StatelessWidget {
                   viewModel: viewModel,
                   modelList: viewModel.resourceList,
                   hideIfEmpty: true,
-                  refreshFunction: viewModel.loadLesson,
+                  refreshFunction: viewModel.loadResource,
                   loadingWidget: const ShimmerResource(),
                   builder: (resourceList) => Column(
                     children: [

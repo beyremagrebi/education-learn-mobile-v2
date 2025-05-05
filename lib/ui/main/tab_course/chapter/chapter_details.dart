@@ -1,18 +1,13 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:studiffy/core/config/env.dart';
 import 'package:studiffy/core/constant/assets.dart';
 import 'package:studiffy/core/extensions/extensions.dart';
 import 'package:studiffy/core/localization/loalisation.dart';
 import 'package:studiffy/core/style/dimensions.dart';
 import 'package:studiffy/core/style/themes/app_theme.dart';
-import 'package:studiffy/utils/alert_utils.dart';
 import 'package:studiffy/utils/file_type_utils.dart';
-import 'package:studiffy/utils/file_utils.dart';
 import 'package:studiffy/utils/navigator_utils.dart';
 import 'package:studiffy/utils/widgets/background_image_safe_area.dart';
-import 'package:studiffy/utils/widgets/media/pdf/pdf_view_file.dart';
-import 'package:studiffy/utils/widgets/media/video/video_player_view.dart';
+import 'package:studiffy/utils/widgets/media/material_view_file.dart';
 
 import '../../../../models/global/study_material.dart';
 import '../../../../models/training_center/lesson/chapter.dart';
@@ -214,32 +209,15 @@ class ChapterDetailPage extends StatelessWidget {
       ),
       trailing: const Icon(Icons.file_open),
       onTap: () {
-        final fileName = material.fileName ?? intl.undefined;
         // Assuming you have this property
 
-        if (FileUtils.isVideo(fileName)) {
-          navigateTo(
-            context,
-            VideoPlayerView(
-              url: '$videofileUrl/$fileName',
-            ),
-          );
-        } else if (FileUtils.isPdf(fileName)) {
-          navigateTo(
-            context,
-            PdfViewFile(
-              url: '$fileUrl/lesson/$fileName',
-            ),
-          );
-        } else {
-          // Fallback for unsupported types - maybe download or show message
-          AlertUtils.show(
-            title: 'File type not supported',
-            description:
-                'Cannot open ${FileUtils.getExtension(fileName)} files',
-            dialogType: DialogType.error,
-          );
-        }
+        navigateTo(
+          context,
+          MaterialViewFile(
+            displayName: material.displayName,
+            fileName: material.fileName,
+          ),
+        );
       },
     );
   }

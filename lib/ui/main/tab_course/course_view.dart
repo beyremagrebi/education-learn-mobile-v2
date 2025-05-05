@@ -8,6 +8,7 @@ import 'package:studiffy/ui/main/tab_course/course_tab_view_model.dart';
 import 'package:studiffy/utils/widgets/async_widgets/async_model_list_builder.dart';
 import 'package:studiffy/utils/widgets/background_image_safe_area.dart';
 import 'package:studiffy/utils/widgets/custum_input_field.dart';
+import 'package:studiffy/utils/widgets/shimmer/shimmer_text.dart';
 
 import '../../../utils/widgets/async_widgets/async_model_list_view_builder.dart';
 import 'widgets/animated_class_selector.dart';
@@ -32,11 +33,15 @@ class CourseView extends StatelessWidget {
                   viewModel: viewModel,
                   modelList: viewModel.classes,
                   hideIfEmpty: viewModel.classes.isEmptyOrNull,
+                  loadingWidget: const ShimmerText.rectangular(
+                    height: 30,
+                    width: 150,
+                  ),
                   builder: (classes) => AnimatedClassSelector(
                     currentClassName: viewModel.currentClass,
                     availableClasses: classes,
                     onClassChanged: viewModel.changeClasse,
-                    textColor: Colors.white,
+                    textColor: Theme.of(context).colorScheme.onSurface,
                     accentColor: Theme.of(context).primaryColor,
                   ),
                 ),

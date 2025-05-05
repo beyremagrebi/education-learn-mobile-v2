@@ -43,8 +43,7 @@ class ErrorDisplayWidget extends StatelessWidget {
                 color: isDark ? Colors.red.shade300 : Colors.red.shade700,
               ),
             ),
-            const SizedBox(height: 24),
-
+            Dimensions.heightMedium,
             // Error title
             Text(
               title ?? intl.errorTitle,
@@ -55,7 +54,6 @@ class ErrorDisplayWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 12),
 
             // Error message
             Text(
@@ -66,10 +64,10 @@ class ErrorDisplayWidget extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 32),
 
             // Retry button
-            if (onRetry != null)
+            if (onRetry != null) ...[
+              Dimensions.heightMedium,
               CustomFilledButton(
                   widget: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -79,6 +77,7 @@ class ErrorDisplayWidget extends StatelessWidget {
                     ],
                   ),
                   onPressed: onRetry)
+            ]
           ],
         ),
       ),

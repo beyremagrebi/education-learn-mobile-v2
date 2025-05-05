@@ -110,7 +110,7 @@ class FileUtils {
     if (parts.length > 1) {
       return parts.last;
     } else {
-      return ''; // No extension found
+      return '';
     }
   }
 }

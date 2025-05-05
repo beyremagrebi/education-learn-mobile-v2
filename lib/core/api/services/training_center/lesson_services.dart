@@ -1,5 +1,7 @@
 import 'package:studiffy/core/api/api_response.dart';
 import 'package:studiffy/core/api/services/base_service.dart';
+import 'package:studiffy/core/api/utils/pagination_response.dart';
+import 'package:studiffy/models/global/study_material.dart';
 import 'package:studiffy/models/training_center/lesson/lesson.dart';
 import 'package:studiffy/utils/app/session/session_manager.dart';
 
@@ -43,11 +45,11 @@ class LessonServices extends BaseService<Lesson> {
     );
   }
 
-  Future<ApiResponse<List<Lesson>>> getLessonBySubject(
+  Future<ApiResponse<PaginatedResponse<Lesson>>> getPaginationLessonBySubject(
     String? subjectId,
   ) async {
     return await ApiService.call(
-      url: '$apiUrl/get-all-new-lessons/$subjectId',
+      url: '$apiUrl/get-all-new-lessons-pagination/$subjectId',
       httpMethod: HttpMethod.get,
     );
   }
@@ -58,6 +60,16 @@ class LessonServices extends BaseService<Lesson> {
     return await ApiService.call(
       url: '$apiUrl/get-all-new-lessons-by-class/$classId',
       httpMethod: HttpMethod.get,
+    );
+  }
+
+  Future<ApiResponse<List<StudyMaterial>>> getResourceBySubject(
+    String? subjectId,
+  ) async {
+    return await ApiService.call(
+      url: '$apiUrl/get-all-study-materials-by-subject/$subjectId',
+      httpMethod: HttpMethod.get,
+      dataKey: 'data',
     );
   }
 }

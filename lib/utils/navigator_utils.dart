@@ -19,6 +19,14 @@ Future navigateToDeleteTree(BuildContext? context, Widget view) {
   );
 }
 
+Future replaceScreen(BuildContext? context, Widget view) {
+  return Navigator.of(context ?? mainContext).pushReplacement(
+    MaterialPageRoute(
+      builder: (context) => view,
+    ),
+  );
+}
+
 Future<void> navigateToMainScreen(BuildContext context, User user) async {
   globalProvidersState.initialize(user.id!);
   navigateToDeleteTree(context, const MainView());

@@ -40,8 +40,9 @@ dependencies:
   percent_indicator: ^4.2.5
   qr_flutter: ^4.1.0
   barcode_widget: ^2.0.4
-  video_player: ^2.9.5
   better_player: ^0.0.84
+  webview_flutter: ^4.8.0
+
 
 dev_dependencies:
   flutter_test:
