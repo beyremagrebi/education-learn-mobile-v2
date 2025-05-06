@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studiffy/core/constant/assets.dart';
 import 'package:studiffy/core/extensions/extensions.dart';
+import 'package:studiffy/core/localization/loalisation.dart';
 import 'package:studiffy/core/style/dimensions.dart';
 import 'package:studiffy/models/training_center/lesson/lesson.dart';
 import 'package:studiffy/ui/main/tab_course/lesson_details_view_model.dart';
@@ -28,7 +29,7 @@ class LessonDetailsView extends StatelessWidget {
       child: Consumer<LessonDetailsViewModel>(
         builder: (context, viewModel, child) => Scaffold(
           appBar: AppBar(
-            title: const Text('Leçon'),
+            title: Text(intl.lesson),
             actions: [
               IconButton(
                 icon: const Icon(Icons.more_vert),
@@ -58,17 +59,18 @@ class LessonDetailsView extends StatelessWidget {
                     Dimensions.heightHuge,
                   ],
                   AsyncModelListBuilder(
-                      viewModel: viewModel,
-                      modelList: viewModel.quizzes,
-                      hideIfEmpty: viewModel.quizzes.isEmptyOrNull,
-                      builder: (quizzes) => Column(
-                            children: [
-                              LessonQuizzesSection(
-                                quizzes: quizzes,
-                              ),
-                              Dimensions.heightHuge
-                            ],
-                          )),
+                    viewModel: viewModel,
+                    modelList: viewModel.quizzes,
+                    hideIfEmpty: viewModel.quizzes.isEmptyOrNull,
+                    builder: (quizzes) => Column(
+                      children: [
+                        LessonQuizzesSection(
+                          quizzes: quizzes,
+                        ),
+                        Dimensions.heightHuge
+                      ],
+                    ),
+                  ),
                   if (lesson.meetCode != null) ...[
                     LessonMeetingSection(lesson: lesson),
                     Dimensions.heightHuge,

@@ -27,7 +27,7 @@ class _ResourceSectionState extends State<ResourceSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Ressources',
+          intl.resources,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -48,9 +48,9 @@ class _ResourceSectionState extends State<ResourceSection> {
                 (material) => Column(
                   children: [
                     ResourceItem(
-                      fileName: material.fileName ?? 'sans nom',
+                      fileName: material.fileName ?? intl.undefined,
                       icon: material.icon,
-                      title: material.displayName ?? 'Sans nom',
+                      title: material.displayName ?? intl.undefined,
                       subtitle: material.subtitle,
                     ),
                     const Divider(height: 24, color: Colors.grey),

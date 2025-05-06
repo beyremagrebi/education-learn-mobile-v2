@@ -51,7 +51,7 @@ class LessonDescriptionSection extends StatelessWidget {
               ),
               Dimensions.widthSmall,
               Text(
-                'Description',
+                intl.description,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class LessonDescriptionSection extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 8),
                     child: Text(
-                      'Voir plus',
+                      intl.showMore,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -98,7 +98,7 @@ class LessonDescriptionSection extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 8),
                     child: Text(
-                      'Voir moins',
+                      intl.showLess,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,

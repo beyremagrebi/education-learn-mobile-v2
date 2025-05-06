@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:studiffy/utils/widgets/main/menu.dart';
 
 import '../../../core/style/dimensions.dart';
-
 import '../../navigator_utils.dart';
 
 class MenuWidget extends StatelessWidget {
@@ -78,6 +77,9 @@ class MenuWidget extends StatelessWidget {
               child: Icon(
                 menu!.icon,
                 size: iconSize ?? 30,
+                fill: 0.1,
+                opticalSize: 0.1,
+                weight: 0.1,
                 color: Colors.white,
               ),
             ),

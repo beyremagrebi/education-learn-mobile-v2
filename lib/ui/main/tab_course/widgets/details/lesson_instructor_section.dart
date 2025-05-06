@@ -53,7 +53,7 @@ class LessonInstructorSection extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                'Instructeur',
+                intl.instructor,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

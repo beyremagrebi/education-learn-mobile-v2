@@ -238,9 +238,9 @@ class ChapterDetailPage extends StatelessWidget {
           color: Colors.purple,
         ),
       ),
-      title: Text('Quiz ${index + 1}'),
+      title: Text('${intl.quiz} ${index + 1}'),
       subtitle: Text(
-        isCompleted ? 'Completed' : 'Not attempted',
+        isCompleted ? intl.completed : intl.not_attempted,
         style: TextStyle(
           fontSize: 12,
           color: isCompleted ? Colors.green : Colors.grey.shade400,
@@ -255,7 +255,7 @@ class ChapterDetailPage extends StatelessWidget {
         // Start quiz
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Starting Quiz ${index + 1}...'),
+            content: Text('${intl.starting} ${intl.quiz} ${index + 1}...'),
             duration: const Duration(seconds: 2),
           ),
         );

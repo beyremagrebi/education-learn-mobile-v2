@@ -40,6 +40,7 @@ class CourseView extends StatelessWidget {
                   builder: (classes) => AnimatedClassSelector(
                     currentClassName: viewModel.currentClass,
                     availableClasses: classes,
+                    subtitle: intl.select_class,
                     onClassChanged: viewModel.changeClasse,
                     textColor: Theme.of(context).colorScheme.onSurface,
                     accentColor: Theme.of(context).primaryColor,

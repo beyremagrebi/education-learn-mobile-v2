@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:studiffy/core/localization/flutter_localization.dart';
-
 import 'package:studiffy/core/style/dimensions.dart';
 import 'package:studiffy/core/style/themes/app_text_styles.dart';
 
@@ -44,6 +43,10 @@ class AppTheme {
     tabBarTheme: _tabBarTheme(accentColorLight, true),
     dialogTheme: _dilaogTheme(accentColorLight, true),
     expansionTileTheme: _expansionTileTheme(accentColorLight, true),
+    iconTheme: const IconThemeData(
+      weight: 0.1,
+      color: Colors.black,
+    ),
   );
 
   // Dark Theme Definition
@@ -64,6 +67,10 @@ class AppTheme {
     tabBarTheme: _tabBarTheme(accentColorDark, false),
     dialogTheme: _dilaogTheme(accentColorDark, false),
     expansionTileTheme: _expansionTileTheme(accentColorLight, false),
+    iconTheme: const IconThemeData(
+      weight: 0.1,
+      color: Colors.white,
+    ),
   );
 
   // Color Schemes

@@ -139,5 +139,14 @@
   "showMore": "Afficher plus",
   "showLess": "Afficher moins",
   "chapter": "Chapitre",
-  "studyMaterials": "Matériel d''étude"
+  "studyMaterials": "Matériel d''étude",
+  "unsupported_file_type": "Type de fichier non pris en charge",
+  "lesson": "Leçon",
+  "description": "Description",
+  "select_class": "Sélectionner la Classe",
+  "starting": "Démarrage",
+  "completed": "Terminé",
+  "not_attempted": "Non tenté",
+  "schedule": "Horaire",
+  "resources": "Ressources"
 }

@@ -85,9 +85,9 @@ class MaterialViewFile extends StatelessWidget {
   }
 
   Widget _buildUnsupportedFileViewer() {
-    return const ErrorDisplayWidget(
-      message: 'Unsupported file type',
-      title: 'Error',
+    return ErrorDisplayWidget(
+      message: intl.unsupported_file_type,
+      title: intl.genericError,
     );
   }
 }

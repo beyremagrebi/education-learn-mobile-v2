@@ -140,5 +140,13 @@
   "showLess": "عرض أقل",
   "chapter": "الفصل",
   "studyMaterials": "المواد الدراسية",
-  "@studyMaterials": {}
+  "unsupported_file_type": "نوع الملف غير مدعوم",
+  "lesson": "الدرس",
+  "description": "الوصف",
+  "select_class": "اختر الفصل",
+  "starting": "يبدأ",
+  "completed": "مكتمل",
+  "not_attempted": "لم تتم المحاولة",
+  "schedule": "الجدول الزمني",
+  "resources": "الموارد"
 }

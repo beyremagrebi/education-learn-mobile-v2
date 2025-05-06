@@ -20,7 +20,7 @@ class AnimatedClassSelector extends StatefulWidget {
     this.textColor = Colors.white,
     this.accentColor,
     this.showSubtitle = true,
-    this.subtitle = 'Select Class',
+    required this.subtitle,
   });
 
   @override

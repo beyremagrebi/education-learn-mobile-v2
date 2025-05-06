@@ -14,7 +14,6 @@ import '../../../../../utils/widgets/background_image_safe_area.dart';
 import 'subject_details_view_model.dart';
 import 'widgets/details/instructor_section.dart';
 import 'widgets/details/resource_section.dart';
-import 'widgets/details/subject_details_action_button.dart';
 import 'widgets/details/subject_header.dart';
 import 'widgets/schedule_item.dart';
 import 'widgets/shimmer/shimmer_instruction_section.dart';
@@ -97,7 +96,7 @@ class SubjectDetailsView extends StatelessWidget {
 
                 // Schedule section
                 Text(
-                  'Horaire',
+                  intl.schedule,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -148,8 +147,8 @@ class SubjectDetailsView extends StatelessWidget {
                   ),
                 ),
 
-                // Action buttons
-                const SubjectDetailsActionButton()
+                // // Action buttons
+                // const SubjectDetailsActionButton()
               ],
             ),
           ),
