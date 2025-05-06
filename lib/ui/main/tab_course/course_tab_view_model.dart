@@ -16,12 +16,13 @@ class CourseTabViewModel extends BaseViewModel {
 
   Future<void> changeClasse(Class newClass) async {
     currentClass = newClass;
-    lessonList = null;
+
     await loadLesson();
     update();
   }
 
   Future<void> loadData() async {
+    classes = null;
     await makeApiCall(
       fromMapFunction: Class.fromMap,
       apiCall: ClassServices.shared.getClassesByRole(),
@@ -43,6 +44,7 @@ class CourseTabViewModel extends BaseViewModel {
 
   Future<void> loadLesson() async {
     try {
+      lessonList = null;
       await makeApiCall(
         fromMapFunction: Lesson.fromMap,
         apiCall: LessonServices.shared.getLessonByClass(currentClass?.id),

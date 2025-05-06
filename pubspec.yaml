@@ -38,10 +38,10 @@ dependencies:
   shimmer: ^3.0.0
   flutter_cached_pdfview: ^0.4.3
   percent_indicator: ^4.2.5
-  qr_flutter: ^4.1.0
-  barcode_widget: ^2.0.4
   better_player: ^0.0.84
   webview_flutter: ^4.8.0
+  dart_depcheck: ^0.1.0
+
 
 
 dev_dependencies:

@@ -32,7 +32,6 @@ class CourseView extends StatelessWidget {
                 AsyncModelListBuilder(
                   viewModel: viewModel,
                   modelList: viewModel.classes,
-                  hideIfEmpty: viewModel.classes.isEmptyOrNull,
                   loadingWidget: const ShimmerText.rectangular(
                     height: 30,
                     width: 150,
@@ -47,15 +46,19 @@ class CourseView extends StatelessWidget {
                   ),
                 ),
                 Dimensions.heightLarge,
-                CustomInputField(
-                  hintText: intl.searchHint,
-                  prefixIcon: Icons.search,
+                Visibility(
+                  visible: viewModel.lessonList.isNotEmptyAndNotNull,
+                  child: CustomInputField(
+                    hintText: intl.searchHint,
+                    prefixIcon: Icons.search,
+                  ),
                 ),
                 Dimensions.heightLarge,
                 Expanded(
                   child: AsyncModelListViewBuilder(
                     viewModel: viewModel,
                     modelList: viewModel.lessonList,
+                    hideIfEmpy: viewModel.classes.isEmptyOrNull,
                     refreshFunction: viewModel.loadLesson,
                     loadingShimmer: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),

@@ -56,13 +56,15 @@ class AsyncModelListBuilder<Model extends BaseModel,
   Widget _buildDataIsEmptyWidget() {
     return Visibility(
       visible: !hideIfEmpty,
-      child: EmptyDataWidget(
-        message: emptyMessage ?? 'Aucune donnée disponible',
-        buttonText: 'Actualiser',
-        onRefresh: refreshFunction,
-        textColor: textColor,
-        icon: emptyIcon,
-        title: emptyTitle,
+      child: Center(
+        child: EmptyDataWidget(
+          message: emptyMessage ?? 'Aucune donnée disponible',
+          buttonText: 'Actualiser',
+          onRefresh: refreshFunction,
+          textColor: textColor,
+          icon: emptyIcon,
+          title: emptyTitle,
+        ),
       ),
     );
   }

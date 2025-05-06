@@ -9,6 +9,7 @@ class ClassListViewModel extends BaseViewModel {
 
   List<Class>? classes;
   Future<void> loadData() async {
+    classes = null;
     await makeApiCall(
       fromMapFunction: Class.fromMap,
       apiCall: ClassServices.shared.getClassesByRole(),

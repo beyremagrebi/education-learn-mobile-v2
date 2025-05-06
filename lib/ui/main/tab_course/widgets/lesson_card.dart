@@ -146,7 +146,7 @@ class LessonCard extends StatelessWidget {
                   _buildInfoBadge(
                     context,
                     Icons.description,
-                    '${lesson.chapters?.length} Chapters',
+                    '${lesson.chapters?.length} ${intl.chapters}',
                     !AppTheme.islight
                         ? Colors.blue.shade900
                         : Colors.blue.shade50,

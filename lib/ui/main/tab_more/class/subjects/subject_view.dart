@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:studiffy/ui/main/tab_more/class/subjects/widgets/shimmer/shimmer_subject_card.dart';
-
 import 'package:studiffy/utils/widgets/async_widgets/async_model_list_view_builder.dart';
 import 'package:studiffy/utils/widgets/custum_input_field.dart';
 
 import '../../../../../core/localization/loalisation.dart';
 import '../../../../../core/style/dimensions.dart';
-
 import '../../../../../utils/color_utils.dart';
 import '../class_view_model.dart';
 import 'widgets/subject_card.dart';
@@ -30,6 +28,7 @@ class SubjectView extends StatelessWidget {
           child: AsyncModelListViewBuilder(
             viewModel: viewModel,
             modelList: viewModel.subjectList,
+            refreshFunction: viewModel.loadSubjects,
             loadingShimmer: ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: 5,

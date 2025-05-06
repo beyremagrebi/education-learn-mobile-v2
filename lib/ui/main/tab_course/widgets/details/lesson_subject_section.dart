@@ -119,7 +119,7 @@ class LessonSubjectSection extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${intl.classMenu}: ${lesson.classe?.name}',
+                      '${intl.classMenu}: ${lesson.classe?.id}',
                       style: TextStyle(
                         fontSize: 14,
                         color: !AppTheme.islight

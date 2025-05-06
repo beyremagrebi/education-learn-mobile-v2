@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:studiffy/core/localization/loalisation.dart';
 import 'package:studiffy/core/style/dimensions.dart';
 import 'package:studiffy/ui/main/tab_more/class/class_view.dart';
 import 'package:studiffy/utils/navigator_utils.dart';
@@ -42,7 +43,9 @@ class ClassCard extends StatelessWidget {
     // Get a gradient from the list based on the class ID
     final cardGradient =
         cardGradients[classItem.name.hashCode.toInt() % cardGradients.length];
-
+    bool isRTL() => Directionality.of(context)
+        .toString()
+        .contains(TextDirection.RTL.value.toLowerCase());
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -94,7 +97,7 @@ class ClassCard extends StatelessWidget {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        classItem.name ?? 'Unnamed Class',
+                        classItem.name ?? intl.className,
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -116,7 +119,7 @@ class ClassCard extends StatelessWidget {
                       color: Colors.white70,
                       size: 14,
                     ),
-                    const SizedBox(width: 4),
+                    Dimensions.widthSmall,
                     Expanded(
                       child: Text(
                         '${getShortDate(classItem.startDate)} - ${getShortDate(classItem.endDate)}',
@@ -131,15 +134,17 @@ class ClassCard extends StatelessWidget {
                 Dimensions.heightSmall,
                 // Students count with people icon
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Icon(
                       Icons.people,
                       color: Colors.white,
-                      size: 16,
+                      size: 15,
                     ),
-                    const SizedBox(width: 4),
+                    Dimensions.widthSmall,
                     Text(
-                      '${classItem.totalStudents} Students',
+                      '${classItem.totalStudents} ${intl.students}',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
@@ -161,11 +166,19 @@ class ClassCard extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.pink[100],
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4),
-                              bottomLeft: Radius.circular(4),
-                              topRight: Radius.zero,
-                              bottomRight: Radius.zero,
+                            borderRadius: BorderRadius.only(
+                              topLeft: isRTL()
+                                  ? Radius.zero
+                                  : const Radius.circular(4),
+                              bottomLeft: isRTL()
+                                  ? Radius.zero
+                                  : const Radius.circular(4),
+                              topRight: !isRTL()
+                                  ? Radius.zero
+                                  : const Radius.circular(4),
+                              bottomRight: !isRTL()
+                                  ? Radius.zero
+                                  : const Radius.circular(4),
                             ),
                           ),
                           alignment: Alignment.center,
@@ -197,11 +210,19 @@ class ClassCard extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.blue[100],
-                            borderRadius: const BorderRadius.only(
-                              topRight: Radius.circular(4),
-                              bottomRight: Radius.circular(4),
-                              topLeft: Radius.zero,
-                              bottomLeft: Radius.zero,
+                            borderRadius: BorderRadius.only(
+                              topRight: isRTL()
+                                  ? Radius.zero
+                                  : const Radius.circular(4),
+                              bottomRight: isRTL()
+                                  ? Radius.zero
+                                  : const Radius.circular(4),
+                              topLeft: !isRTL()
+                                  ? Radius.zero
+                                  : const Radius.circular(4),
+                              bottomLeft: !isRTL()
+                                  ? Radius.zero
+                                  : const Radius.circular(4),
                             ),
                           ),
                           alignment: Alignment.center,
@@ -213,7 +234,7 @@ class ClassCard extends StatelessWidget {
                                 color: Colors.blueAccent,
                                 size: 14,
                               ),
-                              const SizedBox(width: 2),
+                              Dimensions.widthSmall,
                               Text(
                                 '${classItem.maleStudentsCount}',
                                 style: const TextStyle(
@@ -240,19 +261,19 @@ class ClassCard extends StatelessWidget {
                       color: Colors.white.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Row(
+                    child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Details',
-                          style: TextStyle(
+                          intl.details,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        SizedBox(width: 4),
-                        Icon(
+                        Dimensions.widthSmall,
+                        const Icon(
                           Icons.arrow_forward_ios,
                           color: Colors.white,
                           size: 12,

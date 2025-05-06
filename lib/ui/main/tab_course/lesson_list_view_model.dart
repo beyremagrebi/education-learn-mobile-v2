@@ -16,6 +16,7 @@ class LessonListViewModel extends BaseViewModel {
 
   Future<void> loadData() async {
     try {
+      lessonList = null;
       await makeApiCall(
         fromMapFunction: Lesson.fromMap,
         apiCall: LessonServices.shared.getLessonByClass(classId),

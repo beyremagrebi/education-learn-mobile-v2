@@ -30,12 +30,6 @@ class LessonDetailsView extends StatelessWidget {
         builder: (context, viewModel, child) => Scaffold(
           appBar: AppBar(
             title: Text(intl.lesson),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.more_vert),
-                onPressed: () => viewModel.showOptionsMenu(),
-              ),
-            ],
           ),
           body: BackgroundImageSafeArea(
             svgAsset: Assets.bgMain,

@@ -27,6 +27,7 @@ class ClassListView extends StatelessWidget {
                 child: AsyncModelListBuilder(
                   viewModel: viewModel,
                   modelList: viewModel.classes,
+                  refreshFunction: viewModel.loadData,
                   loadingWidget: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(

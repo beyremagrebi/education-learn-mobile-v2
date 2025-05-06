@@ -45,7 +45,7 @@ class _DocxViewFileState extends State<DocxViewFile> {
         ),
       )
       ..loadRequest(Uri.parse(
-          "https://docs.google.com/gview?embedded=true&url=${widget.url}"));
+          'https://docs.google.com/gview?embedded=true&url=${widget.url}'));
   }
 
   @override

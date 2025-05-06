@@ -33,7 +33,7 @@ class AuthService extends BaseService<User> {
         'password': password,
         'forMobile': true
       },
-      dataKey: "payload",
+      dataKey: 'payload',
       authIsRequired: false,
     );
   }

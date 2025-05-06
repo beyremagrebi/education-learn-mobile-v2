@@ -11,7 +11,7 @@ class AppUtils {
       WidgetsFlutterBinding.ensureInitialized();
       SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
       debugInvertOversizedImages = true;
-      await dotenv.load(fileName: ".env");
+      await dotenv.load(fileName: '.env');
       await _disableScreenshot();
     } catch (err) {
       debugPrint(err.toString());

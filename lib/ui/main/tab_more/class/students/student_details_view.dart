@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:studiffy/core/constant/assets.dart';
+import 'package:studiffy/core/localization/loalisation.dart';
 import 'package:studiffy/core/style/themes/app_theme.dart';
 import 'package:studiffy/utils/widgets/background_image_safe_area.dart';
 import 'package:studiffy/utils/widgets/media/api_image_widget.dart';
 
 import '../../../../../models/global/user/user.dart';
-import 'bar_qode_view.dart';
 
 class StudentDetailsView extends StatelessWidget {
   final User student;
@@ -47,7 +47,7 @@ class StudentDetailsView extends StatelessWidget {
                   _buildInfoItem(
                     icon: Icons.email,
                     label: 'Email',
-                    value: student.email ?? 'Non spécifié',
+                    value: student.email ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.wc,
@@ -59,27 +59,27 @@ class StudentDetailsView extends StatelessWidget {
                     label: 'Date de naissance',
                     value: student.birthdate != null
                         ? DateFormat('dd/MM/yyyy').format(student.birthdate!)
-                        : 'Non spécifié',
+                        : intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.location_city,
                     label: 'Lieu de naissance',
-                    value: student.birthPlace ?? 'Non spécifié',
+                    value: student.birthPlace ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.badge,
                     label: 'CIN',
-                    value: student.cin ?? 'Non spécifié',
+                    value: student.cin ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.flight,
                     label: 'Passeport',
-                    value: student.passport ?? 'Non spécifié',
+                    value: student.passport ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.work,
                     label: 'Profession',
-                    value: student.occupation ?? 'Non spécifié',
+                    value: student.occupation ?? intl.undefined,
                   ),
                 ],
               ),
@@ -92,17 +92,17 @@ class StudentDetailsView extends StatelessWidget {
                   _buildInfoItem(
                     icon: Icons.phone,
                     label: 'Téléphone',
-                    value: student.phoneNumber ?? 'Non spécifié',
+                    value: student.phoneNumber ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.phone_android,
                     label: 'Téléphone secondaire',
-                    value: student.secondaryPhoneNumber ?? 'Non spécifié',
+                    value: student.secondaryPhoneNumber ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.language,
                     label: 'Site web',
-                    value: student.website ?? 'Non spécifié',
+                    value: student.website ?? intl.undefined,
                   ),
                 ],
               ),
@@ -115,27 +115,27 @@ class StudentDetailsView extends StatelessWidget {
                   _buildInfoItem(
                     icon: Icons.home,
                     label: 'Adresse',
-                    value: student.address ?? 'Non spécifié',
+                    value: student.address ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.location_city,
                     label: 'Ville',
-                    value: student.city ?? 'Non spécifié',
+                    value: student.city ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.flag,
                     label: 'Pays',
-                    value: student.country ?? 'Non spécifié',
+                    value: student.country ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.local_post_office,
                     label: 'Code postal',
-                    value: student.postalCode ?? 'Non spécifié',
+                    value: student.postalCode ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.pin_drop,
                     label: 'Code ZIP',
-                    value: student.zipCode ?? 'Non spécifié',
+                    value: student.zipCode ?? intl.undefined,
                   ),
                 ],
               ),
@@ -148,12 +148,12 @@ class StudentDetailsView extends StatelessWidget {
                   _buildInfoItem(
                     icon: Icons.school,
                     label: 'Classe',
-                    value: student.classe?.toString() ?? 'Non assigné',
+                    value: student.classe?.name.toString() ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.business,
                     label: 'Établissement',
-                    value: student.facility?.toString() ?? 'Non spécifié',
+                    value: student.facility?.toString() ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.person_outline,
@@ -171,22 +171,22 @@ class StudentDetailsView extends StatelessWidget {
                   _buildInfoItem(
                     icon: Icons.account_balance,
                     label: 'Banque',
-                    value: student.bank ?? 'Non spécifié',
+                    value: student.bank ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.credit_card,
                     label: 'RIB',
-                    value: student.rib ?? 'Non spécifié',
+                    value: student.rib ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.business_center,
                     label: 'Entreprise',
-                    value: student.enterprise ?? 'Non spécifié',
+                    value: student.enterprise ?? intl.undefined,
                   ),
                   _buildInfoItem(
                     icon: Icons.badge,
                     label: 'Numéro CNSS',
-                    value: student.cnssNumber ?? 'Non spécifié',
+                    value: student.cnssNumber ?? intl.undefined,
                   ),
                 ],
               ),
@@ -196,16 +196,15 @@ class StudentDetailsView extends StatelessWidget {
               _buildInfoSection(
                 title: 'Autres informations',
                 children: [
-                  const BarCodeView(),
-                  // _buildInfoItem(
-                  //   icon: Icons.qr_code,
-                  //   label: 'Code-barres',
-                  //   value: student.barcode ?? 'Non spécifié',
-                  // ),
+                  _buildInfoItem(
+                    icon: Icons.qr_code,
+                    label: 'Code-barres',
+                    value: student.cin ?? intl.undefined,
+                  ),
                   _buildInfoItem(
                     icon: Icons.tag,
                     label: 'Numéro unique',
-                    value: student.uniqueNumber?.toString() ?? 'Non spécifié',
+                    value: student.uniqueNumber?.toString() ?? intl.undefined,
                   ),
                   if (student.description != null &&
                       student.description!.isNotEmpty)

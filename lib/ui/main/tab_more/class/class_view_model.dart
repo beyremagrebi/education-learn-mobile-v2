@@ -34,6 +34,7 @@ class ClassViewModel extends BaseViewModel {
 
   Future<void> loadStudents() async {
     try {
+      studetns = null;
       await makeApiCall(
         fromMapFunction: User.fromMap,
         apiCall: ClassServices.shared.getStudentsByClass(classId),
@@ -48,6 +49,7 @@ class ClassViewModel extends BaseViewModel {
 
   Future<void> loadSubjects() async {
     try {
+      subjectList = null;
       await makeApiCall(
         fromMapFunction: Subject.fromMap,
         apiCall: SubjectServices.shared.getAllSubjectByRole(classId),

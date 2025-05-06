@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studiffy/core/constant/assets.dart';
 import 'package:studiffy/core/localization/loalisation.dart';
-import 'package:studiffy/ui/main/tab_chat/chat_page.dart';
 import 'package:studiffy/ui/main/tab_course/course_view.dart';
 import 'package:studiffy/ui/main/tab_more/more_tab_view.dart';
 import 'package:studiffy/utils/widgets/background_image_safe_area.dart';
@@ -44,9 +43,7 @@ class MainView extends StatelessWidget {
     final viewModel = context.read<MainViewModel>();
     final List<Widget> tabs = [
       BackgroundImageSafeArea(svgAsset: Assets.bgMain, child: Container()),
-      const ChatPage(
-        isDarkMode: false,
-      ),
+      BackgroundImageSafeArea(svgAsset: Assets.bgMain, child: Container()),
       const CourseView(),
       const MoreTabView(),
     ];

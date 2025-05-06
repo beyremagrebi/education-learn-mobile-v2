@@ -14,9 +14,9 @@ class AsyncModelListViewBuilder<Model extends BaseModel,
   final EdgeInsets? padding;
   final Widget Function(Model model, int index) builder;
   final ScrollController? scrollController;
+  final bool hideIfEmpy;
   final Axis scrollDirection;
   final bool reverse;
-  final bool useGridView;
   final int? crossAxisCount;
   final double? childAspectRatio;
   final double? mainAxisSpacing;
@@ -34,7 +34,7 @@ class AsyncModelListViewBuilder<Model extends BaseModel,
     this.scrollController,
     this.scrollDirection = Axis.vertical,
     this.reverse = false,
-    this.useGridView = false,
+    this.hideIfEmpy = false,
     this.crossAxisCount,
     this.childAspectRatio,
     this.mainAxisSpacing,
@@ -47,37 +47,20 @@ class AsyncModelListViewBuilder<Model extends BaseModel,
     return AsyncModelListBuilder(
       viewModel: viewModel,
       modelList: modelList,
+      hideIfEmpty: hideIfEmpy,
       loadingWidget: loadingShimmer,
       builder: (modelList) => modelList.isEmpty
           ? NoDataRefreshIndicator(
               onRefresh: () async => refreshFunction?.call(),
             )
-          : useGridView
-              ? GridView.count(
-                  crossAxisCount: crossAxisCount ?? 2,
-                  controller: scrollController,
-                  mainAxisSpacing: mainAxisSpacing ?? 10,
-                  crossAxisSpacing: crossAxisSpacing ?? 20,
-                  childAspectRatio: childAspectRatio ?? 3.5 / 4,
-                  padding: padding,
-                  reverse: reverse,
-                  children: modelList
-                      .asMap()
-                      .entries
-                      .map<Widget>(
-                        (entry) => builder(entry.value, entry.key),
-                      )
-                      .toList(),
-                )
-              : ListView.builder(
-                  scrollDirection: scrollDirection,
-                  controller: scrollController,
-                  padding: padding,
-                  reverse: reverse,
-                  itemCount: maxItem ?? modelList.length,
-                  itemBuilder: (context, index) =>
-                      builder(modelList[index], index),
-                ),
+          : ListView.builder(
+              scrollDirection: scrollDirection,
+              controller: scrollController,
+              padding: padding,
+              reverse: reverse,
+              itemCount: maxItem ?? modelList.length,
+              itemBuilder: (context, index) => builder(modelList[index], index),
+            ),
       refreshFunction: refreshFunction,
     );
   }

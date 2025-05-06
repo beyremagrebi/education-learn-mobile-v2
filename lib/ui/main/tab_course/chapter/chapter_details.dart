@@ -54,12 +54,13 @@ class ChapterDetailPage extends StatelessWidget {
       body: BackgroundImageSafeArea(
         svgAsset: Assets.bgMain,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: Dimensions.paddingLarge,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Chapter header
               Container(
+                width: double.maxFinite,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: AppTheme.islight
@@ -69,49 +70,67 @@ class ChapterDetailPage extends StatelessWidget {
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     // Type badge
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: typeColor.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: Text(
-                        chapter.type ?? intl.undefined,
-                        style: TextStyle(
-                          color: typeColor,
-                          fontWeight: FontWeight.bold,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        // Title
+                        Flexible(
+                          child: Text(
+                            chapter.title ?? intl.undefined,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
                         ),
-                      ),
+                        Dimensions.widthMedium,
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: typeColor.withOpacity(0.2),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Text(
+                            chapter.type ?? intl.undefined,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  color: typeColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 16),
-                    // Title
-                    Text(
-                      chapter.title ?? intl.undefined,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
+
+                    Dimensions.heightMedium,
                     // Description
                     if (chapter.description != null &&
                         chapter.description!.isNotEmpty)
                       Text(
                         chapter.description!,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey.shade300,
-                          height: 1.5,
-                        ),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              fontSize: 16,
+                              color: Colors.grey.shade300,
+                              height: 1.5,
+                            ),
                       ),
                   ],
                 ),
               ),
 
-              const SizedBox(height: 24),
+              Dimensions.heightHuge,
 
               // Study materials section
               if (chapter.studyMaterials.isNotEmptyAndNotNull) ...[
@@ -123,7 +142,7 @@ class ChapterDetailPage extends StatelessWidget {
                           _buildMaterialItem(material, context)) ??
                       [],
                 ),
-                const SizedBox(height: 24),
+                Dimensions.heightHuge,
               ],
 
               // Quizzes section
@@ -132,10 +151,12 @@ class ChapterDetailPage extends StatelessWidget {
                   intl.quiz,
                   Icons.quiz,
                   Colors.purple,
-                  List.generate(chapter.quizzes?.length ?? 0,
-                      (index) => _buildQuizItem(index, context)),
+                  List.generate(
+                    chapter.quizzes?.length ?? 0,
+                    (index) => _buildQuizItem(index, context),
+                  ),
                 ),
-                const SizedBox(height: 12),
+                Dimensions.heightHuge,
               ],
             ],
           ),
