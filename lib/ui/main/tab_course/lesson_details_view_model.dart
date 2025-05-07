@@ -17,14 +17,6 @@ class LessonDetailsViewModel extends BaseViewModel {
     update();
   }
 
-  void _shareLesson() {}
-
-  void _saveLesson() {}
-
-  void _downloadAllMaterials() {}
-
-  void _reportIssue() {}
-
   void getQuizzes() {
     if (lesson.chapters.isNotEmptyAndNotNull) {
       quizzes = [];

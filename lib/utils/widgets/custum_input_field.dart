@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:studiffy/core/style/dimensions.dart';
+
 import '../../core/style/themes/app_theme.dart';
 
 class CustomInputField extends StatelessWidget {
@@ -9,6 +10,9 @@ class CustomInputField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final TextInputAction? textInputAction;
+  final ValueChanged<String>? onSubmitted;
 
   const CustomInputField({
     super.key,
@@ -18,6 +22,9 @@ class CustomInputField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
     this.controller,
+    this.focusNode,
+    this.textInputAction,
+    this.onSubmitted,
   });
 
   @override
@@ -34,6 +41,9 @@ class CustomInputField extends StatelessWidget {
       ),
       child: TextField(
         controller: controller,
+        focusNode: focusNode,
+        textInputAction: textInputAction,
+        onSubmitted: onSubmitted,
         onTapOutside: (event) => FocusScope.of(context).unfocus(),
         onChanged: onChanged,
         keyboardType: keyboardType,
