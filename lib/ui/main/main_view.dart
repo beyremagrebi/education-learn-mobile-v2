@@ -23,6 +23,7 @@ class MainView extends StatelessWidget {
       builder: (context, child) {
         final viewModel = context.read<MainViewModel>();
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           extendBodyBehindAppBar: true,
           appBar: AppBar(flexibleSpace: const MainAppBar()),
           body: Scaffold(

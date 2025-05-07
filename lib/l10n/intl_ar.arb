@@ -148,5 +148,9 @@
   "completed": "مكتمل",
   "not_attempted": "لم تتم المحاولة",
   "schedule": "الجدول الزمني",
-  "resources": "الموارد"
+  "resources": "الموارد",
+  "femaleMajority": "أغلبية إناث",
+  "maleMajority": "أغلبية ذكور",
+  "instructorLed": "بقيادة مدربين",
+  "studentFocused": "مركز على الطلاب"
 }

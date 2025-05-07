@@ -109,8 +109,8 @@ class ClassCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Expanded(child: Dimensions.heightMedium),
-
+                const Expanded(child: Dimensions.heightSmall),
+                Dimensions.heightMedium,
                 // Period with calendar icon
                 Row(
                   children: [
@@ -145,6 +145,27 @@ class ClassCard extends StatelessWidget {
                     Dimensions.widthSmall,
                     Text(
                       '${classItem.totalStudents} ${intl.students}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Dimensions.heightSmall,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.people,
+                      color: Colors.white,
+                      size: 15,
+                    ),
+                    Dimensions.widthSmall,
+                    Text(
+                      '${classItem.instructorCount} ${intl.instructors}',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,

@@ -54,6 +54,15 @@ class LessonServices extends BaseService<Lesson> {
     );
   }
 
+  Future<ApiResponse<PaginatedResponse<Lesson>>> getPaginationLessonWithFiltre(
+    String? classId,
+  ) async {
+    return await ApiService.call(
+      url: '$apiUrl/get-all-new-lessons-by-class/$classId',
+      httpMethod: HttpMethod.get,
+    );
+  }
+
   Future<ApiResponse<List<Lesson>>> getLessonByClass(
     String? classId,
   ) async {

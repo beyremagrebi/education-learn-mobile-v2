@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studiffy/core/constant/assets.dart';
+import 'package:studiffy/core/enums/filter_enums.dart';
+import 'package:studiffy/core/extensions/filter_extensions.dart';
+import 'package:studiffy/core/style/dimensions.dart';
 import 'package:studiffy/ui/main/tab_more/class/class_list_view_model.dart';
 import 'package:studiffy/ui/main/tab_more/class/widget/shimmer_class_card.dart';
 import 'package:studiffy/utils/widgets/async_widgets/async_model_list_builder.dart';
 import 'package:studiffy/utils/widgets/background_image_safe_area.dart';
 
+import '../../../../core/localization/loalisation.dart';
+import '../../../../utils/widgets/base/filter_ship_bar.dart';
+import '../../../../utils/widgets/custum_input_field.dart';
 import 'widget/class_card.dart';
 
 class ClassListView extends StatelessWidget {
@@ -24,35 +30,54 @@ class ClassListView extends StatelessWidget {
             svgAsset: Assets.bgMain,
             child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: AsyncModelListBuilder(
-                  viewModel: viewModel,
-                  modelList: viewModel.classes,
-                  refreshFunction: viewModel.loadData,
-                  loadingWidget: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.75,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
+                child: Column(
+                  children: [
+                    CustomInputField(
+                      hintText: intl.searchHint,
+                      prefixIcon: Icons.search,
+                      onChanged: (value) => viewModel.updateSearchQuery(value),
                     ),
-                    itemCount: 4,
-                    itemBuilder: (context, index) => const ShimmerClassCard(),
-                  ),
-                  builder: (classes) => GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.75,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
+                    Dimensions.heightLarge,
+                    FilterChipBar<ClassFilter>(
+                      filters: ClassFilter.values,
+                      viewModel: viewModel,
+                      getLabel: (filter) => filter.getLabel(context),
                     ),
-                    itemCount: classes.length,
-                    itemBuilder: (context, index) {
-                      final classItem = classes[index];
-                      return ClassCard(classItem: classItem);
-                    },
-                  ),
+                    Dimensions.heightExtraLarge,
+                    Expanded(
+                      child: AsyncModelListBuilder(
+                        viewModel: viewModel,
+                        modelList: viewModel.filteredUsers,
+                        refreshFunction: viewModel.loadData,
+                        loadingWidget: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.75,
+                            crossAxisSpacing: 16,
+                            mainAxisSpacing: 16,
+                          ),
+                          itemCount: 4,
+                          itemBuilder: (context, index) =>
+                              const ShimmerClassCard(),
+                        ),
+                        builder: (classes) => GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.70,
+                            crossAxisSpacing: 16,
+                            mainAxisSpacing: 16,
+                          ),
+                          itemCount: classes.length,
+                          itemBuilder: (context, index) {
+                            final classItem = classes[index];
+                            return ClassCard(classItem: classItem);
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 )),
           ),
         ),

@@ -1,8 +1,8 @@
 import 'package:studiffy/core/api/utils/from_json.dart';
-
 import 'package:studiffy/core/base/base_model.dart';
 import 'package:studiffy/core/extensions/extensions.dart';
 import 'package:studiffy/models/training_center/subject.dart';
+
 import '../../../core/api/utils/to_json.dart';
 import '../../global/user/user.dart';
 

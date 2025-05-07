@@ -148,5 +148,9 @@
   "completed": "Terminé",
   "not_attempted": "Non tenté",
   "schedule": "Horaire",
-  "resources": "Ressources"
+  "resources": "Ressources",
+  "femaleMajority": "Majorité féminine",
+  "maleMajority": "Majorité masculine",
+  "instructorLed": "Dirigé par instructeurs",
+  "studentFocused": "Centré sur étudiants"
 }

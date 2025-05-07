@@ -29,7 +29,7 @@ class ClassView extends StatelessWidget {
               isEmpty: viewModel.classe == null,
               loadingWidget:
                   const ShimmerText.rectangular(width: 80, height: 20),
-              builder: (classe) => Text(classe.name ?? 'undefined'),
+              builder: (classe) => Text(classe.name ?? intl.undefined),
               refreshFunction: () => viewModel.loadClass(classId),
             ),
           ),
@@ -40,13 +40,9 @@ class ClassView extends StatelessWidget {
               child: Column(
                 children: [
                   TabBar(tabs: [
-                    Tab(
-                      text: intl.students,
-                    ),
+                    Tab(text: intl.students),
                     Tab(text: intl.subjects),
-                    const Tab(
-                      text: 'lessons',
-                    )
+                    Tab(text: intl.lesson)
                   ]),
                   Dimensions.heightMedium,
                   Expanded(
@@ -60,7 +56,9 @@ class ClassView extends StatelessWidget {
                           SubjectView(
                             viewModel: viewModel,
                           ),
-                          LessonListVew(classId: classId)
+                          LessonListVew(
+                            classId: classId,
+                          )
                         ],
                       ),
                     ),

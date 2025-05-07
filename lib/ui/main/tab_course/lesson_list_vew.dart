@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:studiffy/core/extensions/filter_extensions.dart';
 import 'package:studiffy/core/localization/loalisation.dart';
 import 'package:studiffy/core/style/dimensions.dart';
 import 'package:studiffy/ui/main/tab_course/lesson_list_view_model.dart';
@@ -7,6 +8,8 @@ import 'package:studiffy/ui/main/tab_course/widgets/lesson_card.dart';
 import 'package:studiffy/utils/widgets/async_widgets/async_model_list_view_builder.dart';
 import 'package:studiffy/utils/widgets/custum_input_field.dart';
 
+import '../../../core/enums/filter_enums.dart';
+import '../../../utils/widgets/base/filter_ship_bar.dart';
 import 'widgets/shimmer_lesson_card.dart';
 
 class LessonListVew extends StatelessWidget {
@@ -27,21 +30,15 @@ class LessonListVew extends StatelessWidget {
             CustomInputField(
               hintText: intl.searchHint,
               prefixIcon: Icons.search,
+              onChanged: (value) => viewModel.updateSearchQuery(value),
             ),
 
             Dimensions.heightMedium,
             // Filter chips
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                children: [
-                  _buildFilterChip(intl.filterAll, true),
-                  _buildFilterChip(intl.filterUnlocked, false),
-                  _buildFilterChip(intl.filterLocked, false),
-                  _buildFilterChip(intl.filterWithQuiz, false),
-                ],
-              ),
+            FilterChipBar<LessonFilter>(
+              filters: LessonFilter.values,
+              viewModel: viewModel,
+              getLabel: (filter) => filter.getLabel(context),
             ),
 
             Dimensions.heightMedium,
@@ -66,19 +63,6 @@ class LessonListVew extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildFilterChip(String label, bool isSelected) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8),
-      child: FilterChip(
-        label: Text(label),
-        selected: isSelected,
-        onSelected: (selected) {
-          // Apply filter
-        },
       ),
     );
   }

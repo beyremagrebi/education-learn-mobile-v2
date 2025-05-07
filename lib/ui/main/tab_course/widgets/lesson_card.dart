@@ -42,12 +42,14 @@ class LessonCard extends StatelessWidget {
       elevation: !AppTheme.islight ? 0 : 2,
       child: InkWell(
         onTap: () {
-          navigateTo(
-            context,
-            LessonDetailsView(
-              lesson: lesson,
-            ),
-          );
+          if (!(lesson.isLocked ?? false)) {
+            navigateTo(
+              context,
+              LessonDetailsView(
+                lesson: lesson,
+              ),
+            );
+          }
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(

@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:studiffy/core/constant/assets.dart';
-import 'package:studiffy/core/extensions/extensions.dart';
 import 'package:studiffy/core/localization/loalisation.dart';
 import 'package:studiffy/core/style/dimensions.dart';
 import 'package:studiffy/ui/main/tab_course/course_tab_view_model.dart';
+import 'package:studiffy/ui/main/tab_course/lesson_list_vew.dart';
+import 'package:studiffy/utils/widgets/async_widgets/async_model_builder.dart';
 import 'package:studiffy/utils/widgets/async_widgets/async_model_list_builder.dart';
 import 'package:studiffy/utils/widgets/background_image_safe_area.dart';
-import 'package:studiffy/utils/widgets/custum_input_field.dart';
 import 'package:studiffy/utils/widgets/shimmer/shimmer_text.dart';
 
-import '../../../utils/widgets/async_widgets/async_model_list_view_builder.dart';
 import 'widgets/animated_class_selector.dart';
-import 'widgets/lesson_card.dart';
 import 'widgets/shimmer_lesson_card.dart';
 
 class CourseView extends StatelessWidget {
@@ -46,33 +44,25 @@ class CourseView extends StatelessWidget {
                   ),
                 ),
                 Dimensions.heightLarge,
-                Visibility(
-                  visible: viewModel.lessonList.isNotEmptyAndNotNull,
-                  child: CustomInputField(
-                    hintText: intl.searchHint,
-                    prefixIcon: Icons.search,
-                  ),
-                ),
-                Dimensions.heightLarge,
-                Expanded(
-                  child: AsyncModelListViewBuilder(
-                    viewModel: viewModel,
-                    modelList: viewModel.lessonList,
-                    hideIfEmpy: viewModel.classes.isEmptyOrNull,
-                    refreshFunction: viewModel.loadLesson,
-                    loadingShimmer: ListView.builder(
+                AsyncModelBuilder(
+                  viewModel: viewModel,
+                  model: viewModel.currentClass,
+                  loadingWidget: Expanded(
+                    child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) =>
                           const LessonCardShimmer(),
                       itemCount: 5,
                     ),
-                    builder: (lesson, index) {
-                      return LessonCard(
-                        lesson: lesson,
-                      );
-                    },
                   ),
-                ),
+                  isEmpty: viewModel.currentClass == null,
+                  builder: (classe) => Expanded(
+                    child: LessonListVew(
+                      key: ValueKey(classe.id),
+                      classId: classe.id,
+                    ),
+                  ),
+                )
               ],
             ),
           ),

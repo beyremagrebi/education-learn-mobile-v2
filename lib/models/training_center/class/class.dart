@@ -14,7 +14,7 @@ class Class extends BaseModel {
   String? endDate;
   TrainingCenterConfig? scholarityConfigId;
   List<User>? students;
-  SubjectInstructors? subjectsInstructors;
+  List<SubjectInstructors>? subjectsInstructors;
 
   Class({
     required super.id,
@@ -39,8 +39,8 @@ class Class extends BaseModel {
       scholarityConfigId: FromJson.model(
           map['scholarityConfigId'], TrainingCenterConfig.fromMap),
       students: FromJson.modelList(map['students'], User.fromMap),
-      subjectsInstructors: FromJson.model(
-          map['subjectsInstructors'], SubjectInstructors.fromMap),
+      subjectsInstructors: FromJson.modelList(
+          map['subjects_instructors'], SubjectInstructors.fromMap),
     );
   }
 
@@ -53,7 +53,7 @@ class Class extends BaseModel {
     map.add('endDate', endDate);
     map.add('scholarityConfigId', ToJson.model(scholarityConfigId));
     map.add('student', ToJson.modelList(students));
-    map.add('subjectsInstructors', ToJson.model(subjectsInstructors));
+    map.add('subjects_instructors', ToJson.modelList(subjectsInstructors));
     return map;
   }
 
@@ -66,4 +66,5 @@ class Class extends BaseModel {
       totalStudents > 0 ? femaleStudentsCount / totalStudents : 0;
   double get maleRatio =>
       totalStudents > 0 ? maleStudentsCount / totalStudents : 0;
+  int get instructorCount => subjectsInstructors?.length ?? 0;
 }

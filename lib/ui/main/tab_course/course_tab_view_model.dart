@@ -1,11 +1,8 @@
-import 'package:flutter/widgets.dart';
 import 'package:studiffy/core/base/base_view_model.dart';
 import 'package:studiffy/core/extensions/extensions.dart';
 
 import '../../../core/api/services/training_center/class_services.dart';
-import '../../../core/api/services/training_center/lesson_services.dart';
 import '../../../models/training_center/class/class.dart';
-import '../../../models/training_center/lesson/lesson.dart';
 
 class CourseTabViewModel extends BaseViewModel {
   CourseTabViewModel(super.context) {
@@ -15,9 +12,9 @@ class CourseTabViewModel extends BaseViewModel {
   Class? currentClass;
 
   Future<void> changeClasse(Class newClass) async {
+    currentClass = null;
     currentClass = newClass;
 
-    await loadLesson();
     update();
   }
 
@@ -33,27 +30,7 @@ class CourseTabViewModel extends BaseViewModel {
           currentClass = data.first;
         }
         classes = data;
-        await loadLesson();
       },
     );
-  }
-
-  List<Lesson>? lessonList;
-
-  List<Lesson>? get filteredLessons => lessonList;
-
-  Future<void> loadLesson() async {
-    try {
-      lessonList = null;
-      await makeApiCall(
-        fromMapFunction: Lesson.fromMap,
-        apiCall: LessonServices.shared.getLessonByClass(currentClass?.id),
-        onSuccess: (data) {
-          lessonList = data;
-        },
-      );
-    } catch (err) {
-      debugPrint(err.toString());
-    }
   }
 }
